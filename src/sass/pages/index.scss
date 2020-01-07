@@ -1,0 +1,45 @@
+
+.home{
+  background: $blank;
+}
+
+.home article{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 0.5rem;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+		  ". . . . . . . . . . . ."
+		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
+		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
+		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
+		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
+		  ". . . . . . . . . logo-knmi logo-knmi logo-knmi";
+}
+
+.logo-knmi{
+
+  grid-area: logo-knmi;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  width: 100%;
+  max-height: 100%;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-amsterdam{
+  grid-area: logo-amsterdam;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+  width: 100%;
+  max-height: 50%;
+}
+
+
+
+
+
