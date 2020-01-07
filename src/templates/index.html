@@ -1,0 +1,15 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<main data-router-wrapper class="home">
+    <section>
+        <article data-router-view="home">
+            <img src="./img/logo-amsterdam.svg" class="logo-amsterdam" alt="logo-amsterdam"/>
+            <img src="./img/logo-knmi.svg" class="logo-knmi" alt="logo-knmi"/>
+        </article>
+    </section>
+</main>
+{% endblock %}

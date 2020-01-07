@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Index page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" media="all" href="css/app.css" />
+  </head>
+  <body>
+    <!-- BEGIN content -->
+    <div class="out">
+      <main data-router-wrapper class="location">
+        <section class="grid-location">
+          <article data-router-view="location">
+            <div class="information-box">
+              <h1>Hoeveel stikstof is in jouw buurt?</h1>
+              <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
+            </div>
+            <div class="fields">
+              <input type="text" placeholder="Oudeschans" value="" name="place" class="place">
+              <input type="text" placeholder="122" value="" name="number" class="number">
+            </div>
+            <button>volgende</button>
+          </article>
+        </section>
+      </main>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+  </body>
+</html>

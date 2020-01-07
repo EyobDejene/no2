@@ -1,0 +1,23 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<main data-router-wrapper class="location">
+    <section class="grid-location">
+        <article data-router-view="location">
+          <div class="information-box">
+            <h1>Hoeveel stikstof is in jouw buurt?</h1>
+            <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
+          </div>
+
+          <div class="fields">
+            <input type="text" placeholder="Oudeschans" value="" name="place" class="place">
+            <input type="text" placeholder="122" value="" name="number" class="number">
+          </div>
+          <button>volgende</button>
+        </article>
+    </section>
+</main>
+{% endblock %}

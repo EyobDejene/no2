@@ -1,0 +1,68 @@
+.location{
+    background: $amsterdamRed;
+}
+
+.location article{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+        "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box"
+        ". . . . . . . . . . . ."
+        ". . fields fields fields fields fields fields fields fields . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . button button";
+
+}
+
+.location .information-box{
+    grid-area: info-box;
+    color: $boxText;
+}
+
+.location button{
+    grid-area: button;
+    color: $boxText;
+}
+
+.location button{
+    background-color: $nextButtonYellow;
+}
+
+.location button:hover{
+    background-color: $nextButtonYellowHover;
+}
+
+
+.location .fields{
+    grid-area: fields;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.location input{
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-family: paragraph;
+    border-radius: 0.3rem;
+
+}
+
+.location .fields .place{
+    width: 64%;
+}
+
+.location .fields .number{
+    width: 35%;
+    align-items: flex-end;
+}
+
+
+
+
+
