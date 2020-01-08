@@ -8,6 +8,7 @@
     <meta name="theme-color" content="#fff" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" media="all" href="css/app.css" />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
     <!-- BEGIN content -->
@@ -19,10 +20,16 @@
               <h1>Hoeveel stikstof is in jouw buurt?</h1>
               <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
             </div>
-            <div class="fields">
-              <input type="text" placeholder="Oudeschans" value="" name="place" class="place">
-              <input type="text" placeholder="122" value="" name="number" class="number">
-            </div>
+            <form class="fields">
+              <div class="group livingplace">
+                <label for="place">Straatnaam</label>
+                <input id="place" type="text" placeholder="Oudeschans" value="" name="place" class="place">
+              </div>
+              <div class="group housenumber">
+                <label for="number">Huisnummer</label>
+                <input id="number" type="text" placeholder="122" value="" name="number" class="number">
+              </div>
+            </form>
             <button>volgende</button>
           </article>
         </section>

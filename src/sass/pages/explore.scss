@@ -1,0 +1,30 @@
+.explore{
+    background: #4e2c59;
+}
+
+.explore .information-box{
+    grid-area: info-box;
+    color: $boxText;
+}
+
+.explore section{
+    pointer-events: none;
+}
+
+.explore article{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    grid-auto-rows: auto;
+    grid-template-areas:
+        "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box";
+}
+
+
+#map{
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    z-index: -2;
+}

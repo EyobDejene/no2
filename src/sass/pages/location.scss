@@ -6,11 +6,18 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0.5rem;
-    grid-template-rows: repeat(6, 1fr);
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
     grid-template-areas:
         "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box"
         ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
         ". . fields fields fields fields fields fields fields fields . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . button button";
@@ -38,30 +45,64 @@
 
 .location .fields{
     grid-area: fields;
-    display: flex;
     justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+    "place place place place number number";
 }
+
+
 
 
 .location input{
     box-sizing: border-box;
     display: inline-block;
-    padding: 1rem;
+    padding: 1.5rem;
     font-size: 1.4rem;
     font-family: paragraph;
     border-radius: 0.3rem;
+    -webkit-box-shadow: -7px 7px 5px -4px rgba(0,0,0,0.20);
+    -moz-box-shadow: -7px 7px 5px -4px rgba(0,0,0,0.20);
+    box-shadow: -7px 7px 5px -4px rgba(0,0,0,0.20);
 
+}
+
+form label {
+    position: relative;
+    display: block;
+    padding-bottom: 1rem;
+    color: $blank;
+    font-family: title;
+}
+
+.location .livingplace{
+    grid-area: place;
+}
+
+.location .housenumber{
+    grid-area: number;
 }
 
 .location .fields .place{
-    width: 64%;
+    width: 100%;
 }
 
 .location .fields .number{
-    width: 35%;
+    width: 100%;
     align-items: flex-end;
 }
 
+
+.location .group{
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0.1rem;
+}
 
 
 

@@ -1,0 +1,19 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<main data-router-wrapper class="explore">
+    <section class="grid-explore">
+        <article data-router-view="explore">
+          <div class="information-box">
+            <h1>Stikstofwaardes in jouw buurt</h1>
+            <p>Oudeschans 12 <b>58 ug/m3</b></p>
+          </div>
+
+        </article>
+    </section>
+  <div id="map"></div>
+</main>
+{% endblock %}
