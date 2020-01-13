@@ -29,16 +29,16 @@
     color: $boxText;
 }
 
-.location a{
+.location .button{
     grid-area: button;
     color: $boxText;
 }
 
-.location a{
+.location .button{
     background-color: $nextButtonYellow;
 }
 
-.location a:hover{
+.location .button:hover{
     background-color: $nextButtonYellowHover;
 }
 

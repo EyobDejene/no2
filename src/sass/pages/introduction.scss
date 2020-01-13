@@ -40,12 +40,12 @@
 }
 
 
-.introduction .information-box a{
+.introduction .information-box .button{
     width: 50%;
     background-color: $nextButtonYellow;
 }
 
-.introduction .information-box a:hover{
+.introduction .information-box .button:hover{
     background-color: $nextButtonYellowHover;
 }
 

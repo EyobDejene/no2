@@ -1,3 +1,4 @@
 src/js/lib
 src/js/app.js
 src/js/fade.js
+src/js/geocode.js
