@@ -13,14 +13,18 @@
   <body>
     <!-- BEGIN content -->
     <div class="out">
-      <main data-router-wrapper class="home">
-        <section>
-          <article data-router-view="home">
-            <img src="./img/logo-amsterdam.svg" class="logo-amsterdam" alt="logo-amsterdam" />
-            <img src="./img/logo-knmi.svg" class="logo-knmi" alt="logo-knmi" />
-          </article>
-        </section>
-      </main>
+      <div data-router-wrapper>
+        <div data-router-view="home">
+          <main class="home">
+            <section>
+              <article>
+                <img src="./img/logo-amsterdam.svg" class="logo-amsterdam" alt="logo-amsterdam" />
+                <img src="./img/logo-knmi.svg" class="logo-knmi" alt="logo-knmi" />
+              </article>
+            </section>
+          </main>
+        </div>
+      </div>
     </div>
     <!-- END content -->
     <!-- BEGIN scripts -->

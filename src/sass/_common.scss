@@ -62,14 +62,20 @@ main{
 		  ". . . . . . . . . . . .";
 }
 
-button {
-  padding: 5%;
-  margin-top: 2rem;
+main a {
+  padding: 1.4rem;
+  width: 100%;
+  height: fit-content;
   border-radius: 0.3rem;
   font-family: paragraph;
   font-size: 1.4rem;
   color: $buttonText;
-
+  text-align: center;
+  text-decoration: none;
+    margin-top: 2rem;
+  //height:4rem;
+  //  display: table-cell;
+  //  vertical-align: middle;
 }
 
 .information-box h1{
@@ -85,4 +91,13 @@ button {
 
 .group{
     display: inline-block;
+}
+
+.mapboxgl-popup {
+    z-index: 5;
+    position: absolute;
+}
+
+.mapboxgl-ctrl-bottom-left,.mapboxgl-ctrl-bottom-right{
+    display: none!important;
 }

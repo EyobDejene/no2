@@ -1,20 +1,45 @@
 import mapboxgl from 'mapbox-gl';
-
 import Highway from '@dogstudio/highway';
+import Fade from './fade';
 
-const H = new Highway.Core();
-
-
-mapboxgl.accessToken = 'pk.eyJ1IjoiZXlvYndlc3RlcmluayIsImEiOiJjazRjdW9kaHMwcmdxM25tbmgxczl1bDNqIn0.sxOt8treIKFQksKjZoEwfQ';
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/eyobwesterink/ck4cup6am3dwk1co42q9wwmxo',
-  center: [4.895168, 52.370216],
-  zoom: 12,
-  minZoom: 3,
-  maxZoom: 15
-
+const H = new Highway.Core({
+  transitions: {
+    default: Fade
+  }
 });
+
+
+
+// const bounds = [
+//   [4.591389, 52.492103], // Southwest coordinates
+//   [ 4.95168,52.330216] // Northeast coordinates
+// ];
+// const Hs = new Highway.Core();
+
+H.on('NAVIGATE_IN',function () {
+  if(location.pathname == '/explore.html') {
+    loadMap()
+  }
+});
+
+
+if(location.pathname == '/explore.html') {
+  loadMap();
+}
+
+
+function loadMap() {
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZXlvYndlc3RlcmluayIsImEiOiJjazRjdW9kaHMwcmdxM25tbmgxczl1bDNqIn0.sxOt8treIKFQksKjZoEwfQ';
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/eyobwesterink/ck4cup6am3dwk1co42q9wwmxo',
+    center: [4.895168, 52.370216],
+    zoom: 10,
+    minZoom: 14,
+    maxZoom: 15,
+    // maxBounds: bounds // Sets bounds as max
+
+  });
 
 // setTimeout(function () {
 //   map.flyTo({
@@ -24,41 +49,41 @@ const map = new mapboxgl.Map({
 //   })
 // },2000)
 
-map.on('load', function() {
-  map.addSource('heatmap', {
-    "type": "geojson",
-    // "data": "data/convertcsv.geojson",
-    "data": "data/convertv2.geojson",
-    "maxzoom": 15
-  });
+  map.on('load', function () {
+    map.addSource('heatmap', {
+      "type": "geojson",
+      // "data": "data/convertcsv.geojson",
+      "data": "data/mean_no2.geojson",
+      "maxzoom": 15
+    });
 
-  // map.addLayer({
-  //
-  //   "id": "heatmap",
-  //   "type": "heatmap",
-  //   "source": "heatmap",
-  //   "circle": {
-  //     "heatmap-radius": 100,
-  //     "heatmap-weight": {
-  //       'property': 'conc_ana',
-  //       'type': 'exponential',
-  //       'stops': [[2, 60], [10, 1]]
-  //       // "stops": [[1, 100], [4, 2]]
-  //     },
-  //     "heatmap-intensity": 100,
-  //     "heatmap-color": [
-  //       // "interpolate",
-  //       // ["linear"],
-  //       ["heatmap-density"],
-  //       0, "rgba(0, 0, 255, 0)",
-  //       0.1, "royalblue",
-  //       0.3, "cyan",
-  //       0.5, "lime",
-  //       0.7, "yellow",
-  //       1, "red"
-  //     ]
-  //   }
-  // }, 'waterway-label');
+    // map.addLayer({
+    //
+    //   "id": "heatmap",
+    //   "type": "heatmap",
+    //   "source": "heatmap",
+    //   "circle": {
+    //     "heatmap-radius": 100,
+    //     "heatmap-weight": {
+    //       'property': 'conc_ana',
+    //       'type': 'exponential',
+    //       'stops': [[2, 60], [10, 1]]
+    //       // "stops": [[1, 100], [4, 2]]
+    //     },
+    //     "heatmap-intensity": 100,
+    //     "heatmap-color": [
+    //       // "interpolate",
+    //       // ["linear"],
+    //       ["heatmap-density"],
+    //       0, "rgba(0, 0, 255, 0)",
+    //       0.1, "royalblue",
+    //       0.3, "cyan",
+    //       0.5, "lime",
+    //       0.7, "yellow",
+    //       1, "red"
+    //     ]
+    //   }
+    // }, 'waterway-label');
 
 //   map.addLayer({
 //
@@ -98,35 +123,35 @@ map.on('load', function() {
 //     }
 //   });
 
-  // map.addLayer({
-  //   "id": "simple-tiles",
-  //   "type": "raster",
-  //   "source": {
-  //     "type": "raster",
-  //     "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=874718354841f0e0250b4b06a05a971e"],
-  //     "tileSize": 256
-  //   },
-  //   "minzoom": 0,
-  //   "maxzoom": 22
-  // });
-  // map.addLayer({
-  //   'id': 'terrain-data',
-  //   'type': 'raster',
-  //   'source': {
-  //     type: 'raster',
-  //     url: 'mapbox://mapbox.satellite'
-  //   },
-  //   'source-layer': 'contour',
-  //   'layout': {
-  //     'line-join': 'round',
-  //     'line-cap': 'round'
-  //   }
-  //   ,
-  //   'paint': {
-  //     'line-color': '#ff69b4',
-  //     'line-width': 1
-  //   }
-  // });
+    // map.addLayer({
+    //   "id": "simple-tiles",
+    //   "type": "raster",
+    //   "source": {
+    //     "type": "raster",
+    //     "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=874718354841f0e0250b4b06a05a971e"],
+    //     "tileSize": 256
+    //   },
+    //   "minzoom": 0,
+    //   "maxzoom": 22
+    // });
+    // map.addLayer({
+    //   'id': 'terrain-data',
+    //   'type': 'raster',
+    //   'source': {
+    //     type: 'raster',
+    //     url: 'mapbox://mapbox.satellite'
+    //   },
+    //   'source-layer': 'contour',
+    //   'layout': {
+    //     'line-join': 'round',
+    //     'line-cap': 'round'
+    //   }
+    //   ,
+    //   'paint': {
+    //     'line-color': '#ff69b4',
+    //     'line-width': 1
+    //   }
+    // });
 
 // });
 
@@ -215,44 +240,37 @@ map.on('load', function() {
 // });
 
 
-map.addLayer(
-  {
-    'id': 'heatmap',
-    'type': 'circle',
-    'source': 'heatmap',
-    'minzoom': 7,
-    'paint': {
+    map.addLayer(
+      {
+        'id': 'heatmap',
+        'type': 'circle',
+        'source': 'heatmap',
+        'minzoom': 7,
+        'paint': {
 // Size circle radius by earthquake magnitude and zoom level
-      'circle-radius': [
-        'interpolate',
-        ['linear'],
-        ['zoom'],
-        7,
-        ['interpolate', ['linear'], ['get', 'conc_ana'], 1, 1, 6, 4],
-        16,
-        ['interpolate', ['linear'], ['get', 'conc_ana'], 1, 5, 6, 50]
-      ],
+          'circle-radius': [
+            'interpolate',
+            ['linear'],
+            ['zoom'],
+            7,
+            ['interpolate', ['linear'], ['get', 'conc_ana'], 1, 10, 10, 40],
+            15,
+            ['interpolate', ['linear'], ['get', 'conc_ana'], 10, 100, 90, 90],
+          ],
 // Color circle by earthquake magnitude
-      'circle-color': [
-        // 'interpolate',
-        // ['linear'],
-        // ['get', 'conc_ana'],
-        // 1, 'rgba(255, 153, 0, 0.38)',
-        // 1.5, 'rgba(255, 153, 0, 0.5)',
-        // 2, 'rgba(255, 153, 0, 1)',
-        // 6,
-        // 'rgba(178,24,43, 0.5)'
+          'circle-color': [
 
-        'interpolate',
-          ['cubic-bezier', 0, 0.5, 1, 0.5],
-          ['get', 'conc_ana'],
-          0, 'rgba(0, 0, 102, 0.5)',
-          10, 'rgba(235, 39, 0, 0.5)',
-          20, 'rgba(255, 204, 0, 1)'
-      ],
-      'circle-blur':3
-      // 'circle-stroke-color': 'white',
-      // 'circle-stroke-width': 1,
+            'interpolate',
+            ['cubic-bezier', 0, 0.5, 1, 0.5],
+            ['get', 'conc_ana'],
+            15, 'rgba(0, 0, 102, 0.5)',
+            25, 'rgba(235, 39, 0, 0.5)',
+            55, 'rgba(255, 204, 0, 0.5)'
+          ],
+          'circle-blur': 1,
+          'circle-opacity': 0.9
+          // 'circle-stroke-color': 'white',
+          // 'circle-stroke-width': 1,
 // Transition from heatmap to circle layer by zoom level
 //       'circle-opacity': [
 //         'interpolate',
@@ -263,8 +281,99 @@ map.addLayer(
 //         8,
 //         1
 //       ]
-    }
-  },
-  'waterway-label'
-);
-});
+        }
+      },
+      'waterway-label'
+    );
+
+
+    const geojson = {
+      type: 'FeatureCollection',
+      features: [{
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.9007825, 52.3707833]
+        },
+        "properties": {
+          "conc_ana": 20.36156
+        }
+      }]
+    };
+
+// add markers to map
+    geojson.features.forEach(function (marker) {
+
+      // create a HTML element for each feature
+      const el = document.createElement('div');
+      el.className = 'marker';
+
+      // make a marker for each feature and add to the map
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
+
+
+      new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+          .setHTML(`<h3>No2 waarde</h3><p>${  Math.floor(marker.properties.conc_ana)  }</p>`))
+        .addTo(map);
+
+      const div = document.querySelector('.nox-value');
+      div.innerHTML = Math.floor(marker.properties.conc_ana);
+      console.log(marker.properties.conc_ana)
+
+    });
+
+
+//   map.on('click', 'heatmap', function(e) {
+//     const coordinates = e.features[0].geometry.coordinates.slice();
+//     const description = e.features[0].properties.conc_ana;
+//
+// // Ensure that if the map is zoomed out such that multiple
+// // copies of the feature are visible, the popup appears
+// // over the copy being pointed to.
+//     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+//       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+//     }
+//
+//     new mapboxgl.Popup()
+//       .setLngLat(coordinates)
+//       .setHTML(description)
+//       .addTo(map);
+//   });
+
+
+    map.on('click', 'heatmap', function (e) {
+      new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
+        .addTo(map);
+    });
+
+
+    // Change the cursor to a pointer when the mouse is over the places layer.
+    map.on('mouseenter', 'heatmap', function () {
+      map.getCanvas().style.cursor = 'default';
+    });
+
+// Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'heatmap', function () {
+      map.getCanvas().style.cursor = '';
+    });
+
+
+  });
+}
+
+
+
+
+// }
+//
+// });
+
+
+
+

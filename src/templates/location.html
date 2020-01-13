@@ -4,25 +4,29 @@ title: Index page
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-<main data-router-wrapper class="location">
-    <section class="grid-location">
-        <article data-router-view="location">
-          <div class="information-box">
-            <h1>Hoeveel stikstof is in jouw buurt?</h1>
-            <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
-          </div>
-          <form class="fields">
-              <div class="group livingplace">
-                <label for="place">Straatnaam</label>
-                <input id="place" type="text" placeholder="Oudeschans" value="" name="place" class="place">
+<div data-router-wrapper>
+  <div  data-router-view="location">
+    <main class="location">
+        <section class="grid-location">
+            <article>
+              <div class="information-box">
+                <h1>Hoeveel stikstof is in jouw buurt?</h1>
+                <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
               </div>
-              <div class="group housenumber">
-                <label for="number">Huisnummer</label>
-                <input id="number" type="text" placeholder="122" value="" name="number" class="number">
-              </div>
-          </form>
-          <button>volgende</button>
-        </article>
-    </section>
-</main>
+              <form class="fields">
+                  <div class="group livingplace">
+                    <label for="place">Straatnaam</label>
+                    <input id="place" type="text" placeholder="Oudeschans" value="" name="place" class="place">
+                  </div>
+                  <div class="group housenumber">
+                    <label for="number">Huisnummer</label>
+                    <input id="number" type="text" placeholder="122" value="" name="number" class="number">
+                  </div>
+              </form>
+              <a href="explore.html">volgende</a>
+            </article>
+        </section>
+    </main>
+  </div>
+</div>
 {% endblock %}

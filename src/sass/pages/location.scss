@@ -15,7 +15,7 @@
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . fields fields fields fields fields fields fields fields . ."
-        ". . . . . . . . . . . ."
+        ". . fields fields fields fields fields fields fields fields . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
@@ -29,16 +29,16 @@
     color: $boxText;
 }
 
-.location button{
+.location a{
     grid-area: button;
     color: $boxText;
 }
 
-.location button{
+.location a{
     background-color: $nextButtonYellow;
 }
 
-.location button:hover{
+.location a:hover{
     background-color: $nextButtonYellowHover;
 }
 
@@ -103,7 +103,6 @@ form label {
     display: inline-block;
     margin: 0.1rem;
 }
-
 
 
 

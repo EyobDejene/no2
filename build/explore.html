@@ -13,17 +13,22 @@
   <body>
     <!-- BEGIN content -->
     <div class="out">
-      <main data-router-wrapper class="explore">
-        <section class="grid-explore">
-          <article data-router-view="explore">
-            <div class="information-box">
-              <h1>Stikstofwaardes in jouw buurt</h1>
-              <p>Oudeschans 12 <b>58 ug/m3</b></p>
-            </div>
-          </article>
-        </section>
-        <div id="map"></div>
-      </main>
+      <div data-router-wrapper>
+        <div data-router-view="explore">
+          <main class="explore">
+            <section class="grid-explore">
+              <article>
+                <div class="information-box">
+                  <h1>Stikstofwaardes in jouw buurt</h1>
+                  <p>Oudeschans 12 <span class="nox-value">58</span><span class="unit">&micro;g/&#x33a5;</span> </p>
+                </div>
+                <a href="explore.html">volgende</a>
+              </article>
+            </section>
+            <div id="map"></div>
+          </main>
+        </div>
+      </div>
     </div>
     <!-- END content -->
     <!-- BEGIN scripts -->
