@@ -84,7 +84,7 @@ function loadMap(long,lat) {
     container: 'map',
     style: 'mapbox://styles/eyobwesterink/ck4cup6am3dwk1co42q9wwmxo',
     center: [long, lat],
-    zoom: 15,
+    zoom: 14,
     minZoom: 14,
     maxZoom: 15,
     // maxBounds: bounds // Sets bounds as max
