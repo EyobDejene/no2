@@ -1,0 +1,111 @@
+.furnace{
+    background: $stoneGrey;
+}
+
+.furnace article{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "page-number info-box info-box info-box info-box info-box info-box info-box . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . fields fields fields fields fields fields fields fields . ."
+        ". . fields fields fields fields fields fields fields fields . ."
+        ". . fields fields fields fields fields fields fields fields . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . button button";
+
+}
+
+.furnace .information-box{
+    grid-area: info-box;
+    color: $boxText;
+}
+
+.furnace .pageNumber{
+    grid-area: page-number;
+    color: $boxText;
+    font-size: 10rem;
+    font-family: title;
+    margin-top: -12px;
+}
+
+
+
+.furnace form{
+    grid-area: fields;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 2rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "an1 an1 an2 an2 an3 an3";
+}
+
+
+.furnace .an1{
+    grid-area: an1;
+}
+
+.furnace .an2{
+    grid-area: an2;
+}
+
+.furnace .an3{
+    grid-area: an3;
+}
+
+.furnace input{
+    margin-left: 50%;
+    margin-bottom: 2rem;
+}
+
+.furnace form label {
+    border-radius: 4px;
+    width: 100%;
+    height: auto;
+}
+
+.furnace form label p{
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+
+
+.furnace label img{
+    align-items: center;
+    justify-content: center;
+    object-fit: cover;
+    width: 100%;
+    max-height: 50%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.furnace .button{
+    grid-area: button;
+    color: $boxText;
+}
+
+.furnace .button{
+    background-color: $nextButtonDarkBlue;
+}
+
+.furnace .button:hover{
+    background-color: $nextButtonDarkBlueHover;
+}
+
+

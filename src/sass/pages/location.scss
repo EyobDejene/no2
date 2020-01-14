@@ -16,7 +16,7 @@
         ". . . . . . . . . . . ."
         ". . fields fields fields fields fields fields fields fields . ."
         ". . fields fields fields fields fields fields fields fields . ."
-        ". . . . . . . . . . . ."
+        ". . messageBox messageBox messageBox messageBox messageBox messageBox messageBox messageBox . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
@@ -52,7 +52,7 @@
     //grid-template-rows: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-    "place place place place number number";
+    "place place place number number postalcode ";
 }
 
 
@@ -62,13 +62,12 @@
     box-sizing: border-box;
     display: inline-block;
     padding: 1.5rem;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-family: paragraph;
     border-radius: 0.3rem;
     -webkit-box-shadow: -7px 7px 5px -4px rgba(0,0,0,0.20);
     -moz-box-shadow: -7px 7px 5px -4px rgba(0,0,0,0.20);
     box-shadow: -7px 7px 5px -4px rgba(0,0,0,0.20);
-
 }
 
 form label {
@@ -87,14 +86,27 @@ form label {
     grid-area: number;
 }
 
+
+.location .postalcode{
+    grid-area: postalcode;
+}
+
+
 .location .fields .place{
     width: 100%;
+    align-items: flex-start;
 }
 
 .location .fields .number{
     width: 100%;
+    align-items: flex-start;
+}
+
+.location .fields .postalcode{
+    width: 100%;
     align-items: flex-end;
 }
+
 
 
 .location .group{
@@ -104,5 +116,15 @@ form label {
     margin: 0.1rem;
 }
 
+
+.messageBox{
+    grid-area: messageBox;
+    width: 100%;
+    position: relative;
+}
+
+.messageBox .message{
+    color: $blank;
+}
 
 

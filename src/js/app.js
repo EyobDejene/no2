@@ -2,7 +2,6 @@ import mapboxgl from 'mapbox-gl';
 import Highway from '@dogstudio/highway';
 import Fade from './fade';
 import {getGeoCode} from './geocode';
-
 const queryString = require('query-string');
 
 const H = new Highway.Core({
@@ -15,6 +14,44 @@ const H = new Highway.Core({
   const parsed = queryString.parse(location.search);
   let streetname = parsed.place;
   let housenumber = parsed.number;
+  let postalcode = parsed.postalcode;
+
+  function getCordinatesAndShowMap(){
+    let retrievedObject = localStorage.getItem('latlong');
+    let lat = JSON.parse(retrievedObject).lat;
+    let long = JSON.parse(retrievedObject).lng;
+    loadMap(long,lat)
+  }
+
+
+
+  let form = document.getElementById('location');
+
+if(form) {
+  form.addEventListener('submit', function (evt) {
+    let streetField = document.getElementById('place').value;
+    let numberField = document.getElementById('number').value;
+    let postalcode = document.getElementById('postalcode').value;
+    // console.log(streetField)
+    // console.log(numberField)
+    // console.log(postalcode)
+    evt.preventDefault()
+    getGeoCode(streetField, numberField, postalcode)
+      .then(data => {
+        // console.log(data)
+        if (data == false) {
+          let message = "Geen data gevonden voor deze locatie.";
+          let boxMessage = document.querySelector('.message');
+          boxMessage.innerHTML = message;
+        } else {
+          window.location.href = '/explore.html?place='+streetField+'&number='+numberField+'&postalcode='+postalcode;
+        }
+        console.log(data)
+      });
+  });
+}
+
+
 
 // const bounds = [
 //   [4.591389, 52.492103], // Southwest coordinates
@@ -24,12 +61,9 @@ const H = new Highway.Core({
 
 H.on('NAVIGATE_IN',function () {
   if(location.pathname == '/explore.html') {
-    getGeoCode(streetname,housenumber).then(data =>{
+    getGeoCode(streetname,housenumber,postalcode).then(data =>{
       // get lat long values form localstorage
-      let retrievedObject = localStorage.getItem('latlong');
-      let lat = JSON.parse(retrievedObject).lat;
-      let long = JSON.parse(retrievedObject).lng;
-      loadMap(long,lat)
+      getCordinatesAndShowMap();
     });
 
   }
@@ -38,12 +72,8 @@ H.on('NAVIGATE_IN',function () {
 
 if(location.pathname == '/explore.html') {
 
-  getGeoCode(streetname,housenumber).then(data =>{
-    // get lat long values form localstorage
-    let retrievedObject = localStorage.getItem('latlong');
-    let lat = JSON.parse(retrievedObject).lat;
-    let long = JSON.parse(retrievedObject).lng;
-    loadMap(long,lat)
+  getGeoCode(streetname,housenumber,postalcode).then(data =>{
+    getCordinatesAndShowMap();
   });
 }
 
@@ -273,9 +303,9 @@ function loadMap(long,lat) {
             ['linear'],
             ['zoom'],
             7,
-            ['interpolate', ['linear'], ['get', 'conc_ana'], 1, 10, 10, 40],
+            ['interpolate', ['linear'], ['get', 'conc_ana'], 1, 100, 190, 90],
             15,
-            ['interpolate', ['linear'], ['get', 'conc_ana'], 10, 100, 90, 90],
+            ['interpolate', ['linear'], ['get', 'conc_ana'], 100, 100, 190, 20],
           ],
 // Color circle by earthquake magnitude
           'circle-color': [
@@ -283,75 +313,117 @@ function loadMap(long,lat) {
             'interpolate',
             ['cubic-bezier', 0, 0.5, 1, 0.5],
             ['get', 'conc_ana'],
-            15, 'rgba(0, 0, 102, 0.5)',
-            25, 'rgba(235, 39, 0, 0.5)',
-            55, 'rgba(255, 204, 0, 0.5)'
+            // 0,  'rgba(48, 96, 207, 0.2)',
+            // 10,  'rgba(48, 96, 207, 0.5)',
+            // 12, 'rgba(105, 127, 207, 0.5)',
+            // 14, 'rgba(250, 231, 172, 0.5)',
+            // 16,  'rgba(191, 195, 199, 0.5)',
+            // 18, 'rgba(236, 237, 210, 0.5)',
+            // 20, 'rgba(250, 231, 172, 0.5)',
+            // 25,  'rgba(196, 69, 58, 0.5)',
+            // 30,  'rgba(227, 146, 109, 0.5)',
+            // 35,  'rgba(214, 108, 81, 0.5)',
+            // 39,  'rgba(196, 69, 58, 0.5)',
+            // 40,  'rgba(176, 29, 27, 0.5)',
+
+
+            0,  'rgba(255, 255, 204,0.5)',
+            10, 'rgba(255, 255, 204,0.5)',
+            12, 'rgba(255, 241, 169,0.5)',
+            14, 'rgba(254, 224, 135,0.5)',
+            16, 'rgba(254, 201, 102,0.5)',
+            18, 'rgba(254, 171, 75,0.5)',
+            20, 'rgba(253, 137, 60,0.5)',
+            25, 'rgba(250, 92, 46,0.5)',
+            30, 'rgba(236, 48, 35,0.5)',
+            35, 'rgba(211, 17, 33,0.5)',
+            39, 'rgba(175, 2, 37,0.5)',
+            40, 'rgba(175, 2, 37,0.5)',
           ],
-          'circle-blur': 1,
+          'circle-blur': 4,
           'circle-opacity': 0.9
-          // 'circle-stroke-color': 'white',
-          // 'circle-stroke-width': 1,
-// Transition from heatmap to circle layer by zoom level
-//       'circle-opacity': [
-//         'interpolate',
-//         ['linear'],
-//         ['zoom'],
-//         7,
-//         0,
-//         8,
-//         1
-//       ]
         }
       },
       'waterway-label'
     );
 
 
-    const geojson = {
-      type: 'FeatureCollection',
-      features: [{
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [long, lat]
-        },
-        "properties": {
-          "conc_ana": 20.36156
-        }
-      }]
-    };
+//     const geojson = {
+//       type: 'FeatureCollection',
+//       features: [{
+//         "type": "Feature",
+//         "geometry": {
+//           "type": "Point",
+//           "coordinates": [long, lat]
+//         },
+//         "properties": {
+//           "conc_ana": 20.36156
+//         }
+//       }]
+//     };
+//
+// // add markers to map
+//     geojson.features.forEach(function (marker) {
+//
+//       // create a HTML element for each feature
+//       const el = document.createElement('div');
+//       el.className = 'marker';
+//
+//       // make a marker for each feature and add to the map
+//       new mapboxgl.Marker(el)
+//         .setLngLat(marker.geometry.coordinates)
+//         .addTo(map);
+//
+//
+//       new mapboxgl.Marker(el)
+//         .setLngLat(marker.geometry.coordinates)
+//         .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+//           .setHTML(`<h3>No2 waarde</h3><p>${  Math.floor(marker.properties.conc_ana)  }</p>`))
+//         .addTo(map);
+//
+//       let noxValue = document.querySelector('.nox-value');
+//       // let noxUnit = document.querySelector('.unit');
+//       let streetName = document.querySelector('.streetName');
+//       let houseNumber = document.querySelector('.houseNumber');
+//       noxValue.innerHTML = Math.floor(marker.properties.conc_ana)+"&micro;g/&#x33a5";
+//       // noxUnit.innerHTML = "&micro;g/&#x33a5";
+//       streetName.innerHTML = streetname;
+//       houseNumber.innerHTML = housenumber;
+//
+//       console.log(marker.properties.conc_ana)
+//
+//     });
 
-// add markers to map
-    geojson.features.forEach(function (marker) {
-
-      // create a HTML element for each feature
+    //create a HTML element for each feature
+    setTimeout(function () {
       const el = document.createElement('div');
       el.className = 'marker';
-
-      // make a marker for each feature and add to the map
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .addTo(map);
-
-
-      new mapboxgl.Marker(el)
-        .setLngLat(marker.geometry.coordinates)
-        .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
-          .setHTML(`<h3>No2 waarde</h3><p>${  Math.floor(marker.properties.conc_ana)  }</p>`))
-        .addTo(map);
-
+      let marker = new mapboxgl.Marker(el).setLngLat([long, lat]);
+      marker.addTo(map);
+      let position = (marker._pos);
+      var features = map.queryRenderedFeatures(position);
+      var displayProperties = ['properties'];
+      var displayFeatures = features.map(function(feat) {
+        var displayFeat = {};
+        displayProperties.forEach(function(prop) {
+          displayFeat[prop] = feat[prop];
+        });
+        return displayFeat;
+      });
       let noxValue = document.querySelector('.nox-value');
-      // let noxUnit = document.querySelector('.unit');
-      let streetName = document.querySelector('.streetName');
+      let streetName = document.querySelector('.streetName')
       let houseNumber = document.querySelector('.houseNumber');
-      noxValue.innerHTML = Math.floor(marker.properties.conc_ana)+"&micro;g/&#x33a5";
-      // noxUnit.innerHTML = "&micro;g/&#x33a5";
+      noxValue.innerHTML = Math.floor(displayFeatures[0].properties.conc_ana)+"&micro;g/&#x33a5";
       streetName.innerHTML = streetname;
       houseNumber.innerHTML = housenumber;
 
-      console.log(marker.properties.conc_ana)
+      new mapboxgl.Popup()
+        .setLngLat([long, lat])
+        .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
+        .addTo(map);
+     // console.log(Math.floor(displayFeatures[0].properties.conc_ana));
+    },1000)
 
-    });
 
 
 //   map.on('click', 'heatmap', function(e) {
@@ -391,74 +463,12 @@ function loadMap(long,lat) {
     });
 
 
+
+
+
   });
 }
 
-
-
-
-
-//return an array of objects according to key, value, or key and value matching
-function getObjects(obj, key, val) {
-  var objects = [];
-  for (var i in obj) {
-    if (!obj.hasOwnProperty(i)) continue;
-    if (typeof obj[i] == 'object') {
-      objects = objects.concat(getObjects(obj[i], key, val));
-    } else
-    //if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
-    if (i == key && obj[i] == val || i == key && val == '') { //
-      objects.push(obj);
-    } else if (obj[i] == val && key == ''){
-      //only add if the object is not already in the array
-      if (objects.lastIndexOf(obj) == -1){
-        objects.push(obj);
-      }
-    }
-  }
-  return objects;
-}
-
-//return an array of values that match on a certain key
-function getValues(obj, key) {
-  var objects = [];
-  for (var i in obj) {
-    if (!obj.hasOwnProperty(i)) continue;
-    if (typeof obj[i] == 'object') {
-      objects = objects.concat(getValues(obj[i], key));
-    } else if (i == key) {
-      objects.push(obj[i]);
-    }
-  }
-  return objects;
-}
-
-//return an array of keys that match on a certain value
-function getKeys(obj, val) {
-  var objects = [];
-  for (var i in obj) {
-    if (!obj.hasOwnProperty(i)) continue;
-    if (typeof obj[i] == 'object') {
-      objects = objects.concat(getKeys(obj[i], val));
-    } else if (obj[i] == val) {
-      objects.push(i);
-    }
-  }
-  return objects;
-}
-
-
-// var json = '{"glossary":{"title":"example glossary","GlossDiv":{"title":"S","GlossList":{"GlossEntry":{"ID":"SGML","SortAs":"SGML","GlossTerm":"Standard Generalized Markup Language","Acronym":"SGML","Abbrev":"ISO 8879:1986","GlossDef":{"para":"A meta-markup language, used to create markup languages such as DocBook.","ID":"44","str":"SGML","GlossSeeAlso":["GML","XML"]},"GlossSee":"markup"}}}}}';
-// let json = require('../src/data/mean_no2.geojson');
-// let js = JSON.parse(json);
-//
-// //example of grabbing objects that match some key and value in JSON
-// console.log(getObjects(js,'coordinates','[ 4.863772,52.31731 ]'));
-
-
-// }
-//
-// });
 
 
 

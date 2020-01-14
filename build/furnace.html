@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Index page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" media="all" href="css/app.css" />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+  </head>
+  <body>
+    <!-- BEGIN content -->
+    <div class="out">
+      <div data-router-wrapper>
+        <div data-router-view="furnace">
+          <main class="furnace">
+            <section class="grid-furnace">
+              <article>
+                <span class="pageNumber">1</span>
+                <div class="information-box">
+                  <h1>Wat voor een kookplaat gebruik je om op te koken?</h1>
+                  <!--<p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>-->
+                </div>
+                <form>
+                  <div class="option an1">
+                    <label>
+                      <input type="radio" name="type_furnace" value="inductie" />
+                      <img src="./img/inductie.svg">
+                      <p>inductie</p>
+                    </label>
+                  </div>
+                  <div class="option an2">
+                    <label>
+                      <input type="radio" name="type_furnace" value="gas" />
+                      <img src="./img/gas.svg">
+                      <p>gas</p>
+                    </label>
+                  </div>
+                  <div class="option an3">
+                    <label>
+                      <input type="radio" name="type_furnace" value="keramisch" />
+                      <img src="./img/keramisch.svg">
+                      <p>keramisch</p>
+                    </label>
+                  </div>
+                </form>
+                <a href="thermostat.html" class="button">volgende</a>
+                <!--<button id="submit" class="button">volgende</button>-->
+              </article>
+            </section>
+          </main>
+        </div>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+  </body>
+</html>

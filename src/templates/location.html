@@ -13,7 +13,7 @@ title: Index page
                 <h1>Hoeveel stikstof is in jouw buurt?</h1>
                 <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
               </div>
-              <form id="location" method="get" action="explore.html" class="fields">
+              <form id="location" method="get" action="?" class="fields">
                   <div class="group livingplace">
                     <label for="place">Straatnaam</label>
                     <input id="place" type="text" placeholder="straatnaam" value="" name="place" class="place">
@@ -22,7 +22,14 @@ title: Index page
                     <label for="number">Huisnummer</label>
                     <input id="number" type="text" placeholder="huisnummer" value="" name="number" class="number">
                   </div>
+                <div class="group postalcode">
+                  <label for="number">Postcode</label>
+                  <input id="postalcode" type="text" placeholder="postcode" value="" name="postalcode" class="postalcode">
+                </div>
               </form>
+              <div class="messageBox">
+                <p class="message"></p>
+              </div>
               <input form="location" id="submit" class="button" type="submit" value="volgende" />
               <!--<button id="submit" class="button">volgende</button>-->
             </article>

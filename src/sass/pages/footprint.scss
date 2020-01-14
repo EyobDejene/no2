@@ -1,8 +1,8 @@
-.introduction{
-    background: $coolBlue;
+.footprint{
+    background: $blank;
 }
 
-.introduction article{
+.footprint article{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0.5rem;
@@ -17,7 +17,7 @@
 
 }
 
-.introduction figure{
+.footprint figure{
     grid-area: figure;
     align-items: center;
     justify-content: center;
@@ -30,22 +30,22 @@
 
 }
 
-.introduction .information-box{
+.footprint .information-box{
     grid-area: info-box;
     justify-content: center;
     align-self: center;
     display: flex;
     flex-direction: column;
-    color: $boxText;
+    color: $amsterdamRed;
 }
 
 
-.introduction .information-box .button{
+.footprint .information-box .button{
     width: 50%;
     align-self: flex-start;
     background-color: $nextButtonYellow;
 }
 
-.introduction .information-box .button:hover{
+.footprint .information-box .button:hover{
     background-color: $nextButtonYellowHover;
 }

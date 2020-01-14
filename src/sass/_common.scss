@@ -72,7 +72,8 @@ main .button {
   color: $buttonText;
   text-align: center;
   text-decoration: none;
-    margin-top: 2rem;
+  margin-top: 2rem;
+  align-self: flex-end;
   //height:4rem;
   //  display: table-cell;
   //  vertical-align: middle;

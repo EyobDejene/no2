@@ -28,7 +28,7 @@
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
-        ". . . . . . . . . . button button";
+        "legend legend legend . . . . . . . button button";
 }
 
 
@@ -36,6 +36,11 @@
     pointer-events: auto!important;
     grid-area: button;
     color: $boxText;
+
+}
+
+.explore .session{
+    grid-area: legend;
 }
 
 .explore .button{
@@ -75,4 +80,36 @@
 .unit{
     display: inline-block;
     margin-left: 0.3rem;
+}
+
+
+
+.session {
+    background-color: $blank;
+    padding: 0.8rem;
+    height: fit-content;
+    pointer-events: auto;
+    align-self: flex-end;
+
+}
+
+.row {
+    height: 12px;
+    width: 100%;
+}
+
+.row .label p{
+    text-align: start;
+}
+
+
+.colors {
+    background: linear-gradient(to right, #f3ba0c, #cc090d, #091137);
+    margin-bottom: 5px;
+}
+
+.label {
+    width: 15%;
+    display: inline-block;
+    text-align: center;
 }
