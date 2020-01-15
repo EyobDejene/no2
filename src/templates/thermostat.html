@@ -1,0 +1,58 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div data-router-wrapper>
+  <div  data-router-view="furnace">
+    <main class="furnace">
+        <section class="grid-furnace">
+            <article>
+              <span class="pageNumber">1</span>
+              <div class="information-box">
+                <h1>Wat voor een kookplaat gebruik je om op te koken?</h1>
+                <!--<p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>-->
+              </div>
+              <form>
+                <div class="option an1">
+                  <label>
+                    <input type="radio" name="type_furnace" value="inductie"/>
+                    <span class="rdb"></span>
+                    <span>
+                    <img src="./img/inductie.svg">
+                    <p>inductie</p>
+                    </span>
+                  </label>
+                </div>
+
+                <div class="option an2">
+                <label>
+                  <input type="radio" name="type_furnace" value="gas"/>
+                  <span class="rdb"></span>
+                  <span>
+                    <img src="./img/gas.svg">
+                      <p>gas</p>
+                    </span>
+                </label>
+                </div>
+
+                <div class="option an3">
+                  <label>
+                    <input type="radio" name="type_furnace" value="keramisch"/>
+                    <span class="rdb"></span>
+                    <span>
+                    <img src="./img/keramisch.svg">
+                    <p>keramisch</p>
+                    </span>
+                  </label>
+                </div>
+              </form>
+              <a href="thermostat.html" class="button">volgende</a>
+              <!--<button id="submit" class="button">volgende</button>-->
+            </article>
+        </section>
+    </main>
+  </div>
+</div>
+{% endblock %}
