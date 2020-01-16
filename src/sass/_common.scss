@@ -13,13 +13,20 @@ body {
 }
 
 
+@font-face {
+    font-family: "digital";
+    src: url("../fonts/VT323-Regular.ttf");
+}
+
+
+
 /*page colors*/
 $blank: #ffffff;
 $coolBlue: #7ebfd9;
 $amsterdamRed: #c03636;
 $stoneGrey: #d3d7d8;
 $screenBlue: #dfe5f2;
-
+$screenYellow: #fcca4c;
 
 /* button colors*/
 $nextButtonYellow: #fcca4c;
@@ -40,7 +47,8 @@ section{
 
 main{
   width: 100%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   z-index: 5;
   position: relative;
   display: grid;
@@ -80,14 +88,14 @@ main .button {
 }
 
 .information-box h1{
-  font-size:2.5rem;
+  font-size:2rem;
   font-family: title;
 }
 
 .information-box p{
   font-size:1.4rem;
   font-family: paragraph;
-  margin-top: 2rem;;
+  margin-top: 1rem;;
 }
 
 .group{
@@ -101,4 +109,18 @@ main .button {
 
 .mapboxgl-ctrl-bottom-left,.mapboxgl-ctrl-bottom-right{
     display: none!important;
+}
+
+.pageNumber{
+    width:5rem;
+    height: 5rem;
+    //border-radius:100%;
+    text-align:center;
+    font-size: 4rem;
+    padding-top:2.5rem;
+    line-height:0;
+    position:relative;
+    color: $blank;
+    //background-color: $nextButtonDarkBlue;
+    font-family: paragraph;
 }

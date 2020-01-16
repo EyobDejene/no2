@@ -51,7 +51,7 @@
     background-color: $nextButtonYellowHover;
 }
 
-#map{
+.explore #map{
     top: 0;
     bottom: 0;
     position: absolute;
@@ -59,7 +59,7 @@
     z-index: -2;
 }
 
-.marker {
+.explore .marker {
     background-image: url('../img/mapbox-icon-amsterdam.png');
     background-size: cover;
     width: 50px;
@@ -71,20 +71,20 @@
 }
 
 
-.nox-value, .unit
+.explore .nox-value, .explore .unit
 {
     font-family: title;
     margin-left: 0.5rem;
 }
 
-.unit{
+.explore .unit{
     display: inline-block;
     margin-left: 0.3rem;
 }
 
 
 
-.session {
+.explore .session {
     background-color: $blank;
     padding: 0.8rem;
     height: fit-content;
@@ -93,23 +93,28 @@
 
 }
 
-.row {
+.explore .row {
     height: 12px;
     width: 100%;
 }
 
-.row .label p{
+.explore .row .label p{
     text-align: start;
 }
 
 
-.colors {
+.explore .colors {
     background: linear-gradient(to right, #f3ba0c, #cc090d, #091137);
     margin-bottom: 5px;
 }
 
-.label {
+.explore .label {
     width: 15%;
     display: inline-block;
     text-align: center;
+}
+
+.ownLocation{
+    pointer-events: auto;
+    cursor: pointer;
 }

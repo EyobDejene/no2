@@ -12,31 +12,24 @@ const H = new Highway.Core({
 
 
   const parsed = queryString.parse(location.search);
-  let streetname = parsed.place;
-  let housenumber = parsed.number;
-  let postalcode = parsed.postalcode;
+  let streetName = parsed.place;
+  let houseNumber = parsed.number;
+  let postalCode = parsed.postalcode;
 
-  function getCordinatesAndShowMap(){
-    let retrievedObject = localStorage.getItem('latlong');
-    let lat = JSON.parse(retrievedObject).lat;
-    let long = JSON.parse(retrievedObject).lng;
-    loadMap(long,lat)
-  }
 
+
+  //let placename = JSON.parse(localStorage.getItem('location')).placename;
 
 
   let form = document.getElementById('location');
 
 if(form) {
   form.addEventListener('submit', function (evt) {
-    let streetField = document.getElementById('place').value;
-    let numberField = document.getElementById('number').value;
+    let street = document.getElementById('place').value;
+    let number = document.getElementById('number').value;
     let postalcode = document.getElementById('postalcode').value;
-    // console.log(streetField)
-    // console.log(numberField)
-    // console.log(postalcode)
     evt.preventDefault()
-    getGeoCode(streetField, numberField, postalcode)
+    getGeoCode(street,number,postalcode)
       .then(data => {
         // console.log(data)
         if (data == false) {
@@ -44,41 +37,45 @@ if(form) {
           let boxMessage = document.querySelector('.message');
           boxMessage.innerHTML = message;
         } else {
-          window.location.href = '/explore.html?place='+streetField+'&number='+numberField+'&postalcode='+postalcode;
+           console.log(data)
+            window.location.href = '/explore.html?place='+street+'&number='+number+'&postalcode='+postalcode;
         }
-        console.log(data)
       });
   });
 }
 
 
 
-// const bounds = [
-//   [4.591389, 52.492103], // Southwest coordinates
-//   [ 4.95168,52.330216] // Northeast coordinates
-// ];
-// const Hs = new Highway.Core();
+
+
 
 H.on('NAVIGATE_IN',function () {
   if(location.pathname == '/explore.html') {
-    getGeoCode(streetname,housenumber,postalcode).then(data =>{
-      // get lat long values form localstorage
       getCordinatesAndShowMap();
-    });
-
   }
 });
 
 
 if(location.pathname == '/explore.html') {
+     getCordinatesAndShowMap();
+}
 
-  getGeoCode(streetname,housenumber,postalcode).then(data =>{
-    getCordinatesAndShowMap();
+
+
+function getCordinatesAndShowMap(){
+  getGeoCode(streetName,houseNumber,postalCode).then(function(){
+    let geometry = JSON.parse(localStorage.getItem('location')).geometry;
+    loadMap(geometry.lng, geometry.lat)
   });
 }
 
 
 function loadMap(long,lat) {
+  const bounds = [
+    [4.7287589, 52.278174], // Southwest coordinates
+    [ 5.0791619,52.431064] // Northeast coordinates
+  ];
+
   mapboxgl.accessToken = 'pk.eyJ1IjoiZXlvYndlc3RlcmluayIsImEiOiJjazRjdW9kaHMwcmdxM25tbmgxczl1bDNqIn0.sxOt8treIKFQksKjZoEwfQ';
   const map = new mapboxgl.Map({
     container: 'map',
@@ -87,17 +84,10 @@ function loadMap(long,lat) {
     zoom: 14,
     minZoom: 14,
     maxZoom: 15,
-    // maxBounds: bounds // Sets bounds as max
+    maxBounds: bounds // Sets bounds as max
 
   });
 
-// setTimeout(function () {
-//   map.flyTo({
-//     center: [4.730281, 52.40595],
-//     zoom: 15,
-//     speed: 0.8
-//   })
-// },2000)
 
   map.on('load', function () {
     map.addSource('heatmap', {
@@ -106,188 +96,6 @@ function loadMap(long,lat) {
       "data": "data/mean_no2.geojson",
       "maxzoom": 15
     });
-
-    // map.addLayer({
-    //
-    //   "id": "heatmap",
-    //   "type": "heatmap",
-    //   "source": "heatmap",
-    //   "circle": {
-    //     "heatmap-radius": 100,
-    //     "heatmap-weight": {
-    //       'property': 'conc_ana',
-    //       'type': 'exponential',
-    //       'stops': [[2, 60], [10, 1]]
-    //       // "stops": [[1, 100], [4, 2]]
-    //     },
-    //     "heatmap-intensity": 100,
-    //     "heatmap-color": [
-    //       // "interpolate",
-    //       // ["linear"],
-    //       ["heatmap-density"],
-    //       0, "rgba(0, 0, 255, 0)",
-    //       0.1, "royalblue",
-    //       0.3, "cyan",
-    //       0.5, "lime",
-    //       0.7, "yellow",
-    //       1, "red"
-    //     ]
-    //   }
-    // }, 'waterway-label');
-
-//   map.addLayer({
-//
-//     'id': 'population',
-//     'type': 'circle',
-//     'source': {
-//       type: 'vector',
-//       url: 'mapbox://examples.8fgz4egr'
-//     },
-//     'source-layer': 'sf2010',
-//     'paint': {
-// // make circles larger as the user zooms from z12 to z22
-//       'circle-radius': {
-//         'base': 100,
-//         'stops': [
-//           [12, 2],
-//           [22, 180]
-//         ]
-//       },
-// // color circles by ethnicity, using a match expression
-// // https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-match
-//       'circle-color': [
-//
-//         'match',
-//         ['get', 'ethnicity'],
-//
-//         'White',
-//         '#fb44b6',
-//         'Black',
-//         '#223b53',
-//         'Hispanic',
-//         '#e55e5e',
-//         'Asian',
-//         '#3bb2d0',
-//         /* other */ '#ccc'
-//       ]
-//     }
-//   });
-
-    // map.addLayer({
-    //   "id": "simple-tiles",
-    //   "type": "raster",
-    //   "source": {
-    //     "type": "raster",
-    //     "tiles": ["https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=874718354841f0e0250b4b06a05a971e"],
-    //     "tileSize": 256
-    //   },
-    //   "minzoom": 0,
-    //   "maxzoom": 22
-    // });
-    // map.addLayer({
-    //   'id': 'terrain-data',
-    //   'type': 'raster',
-    //   'source': {
-    //     type: 'raster',
-    //     url: 'mapbox://mapbox.satellite'
-    //   },
-    //   'source-layer': 'contour',
-    //   'layout': {
-    //     'line-join': 'round',
-    //     'line-cap': 'round'
-    //   }
-    //   ,
-    //   'paint': {
-    //     'line-color': '#ff69b4',
-    //     'line-width': 1
-    //   }
-    // });
-
-// });
-
-
-//   map.addLayer({
-//     id: 'heatmap',
-//     type: 'heatmap',
-//     source: 'heatmap',
-//     maxzoom: 15,
-//     paint: {
-//       // increase weight as diameter breast height increases
-//       'heatmap-weight': {
-//         property: 'conc_ana',
-//         type: 'exponential',
-//         stops: [
-//           [1, 0],
-//           [62, 1]
-//         ]
-//       },
-//       // increase intensity as zoom level increases
-//       'heatmap-intensity': {
-//         stops: [
-//           [11, 1],
-//           [15, 3]
-//         ]
-//       },
-//       // assign color values be applied to points depending on their density
-//       'heatmap-color': [
-//         'interpolate',
-//         ['linear'],
-//         ['heatmap-density'],
-//         0, 'rgba(236,222,239,0)',
-//         0.2, 'rgb(208,209,230)',
-//         0.4, 'rgb(166,189,219)',
-//         0.6, 'rgb(103,169,207)',
-//         0.8, 'rgb(28,144,153)'
-//       ],
-//       // increase radius as zoom increases
-//       'heatmap-radius': {
-//         stops: [
-//           [11, 15],
-//           [15, 20]
-//         ]
-//       },
-//       // decrease opacity to transition into the circle layer
-//       'heatmap-opacity': {
-//         default: 1,
-//         stops: [
-//           [14, 1],
-//           [15, 0]
-//         ]
-//       },
-//     }
-//   }, 'waterway-label');
-// });
-//
-//   map.addSource('10m-bathymetry-81bsvj', {
-//     type: 'vector',
-//     url: 'mapbox://mapbox.9tm8dx88'
-//   });
-//
-//   map.addLayer(
-//     {
-//       'id': '10m-bathymetry-81bsvj',
-//       'type': 'fill',
-//       'source': '10m-bathymetry-81bsvj',
-//       'source-layer': '10m-bathymetry-81bsvj',
-//       'layout': {},
-//       'paint': {
-//         'fill-outline-color': 'hsla(337, 82%, 62%, 0)',
-// // cubic bezier is a four point curve for smooth and precise styling
-// // adjust the points to change the rate and intensity of interpolation
-//         'fill-color': [
-//           'interpolate',
-//           ['cubic-bezier', 0, 0.5, 1, 0.5],
-//           ['get', 'DEPTH'],
-//           200,
-//           '#78bced',
-//           9000,
-//           '#15659f'
-//         ]
-//       }
-//     },
-//     'land-structure-polygon'
-//   );
-// });
 
 
     map.addLayer(
@@ -348,81 +156,66 @@ function loadMap(long,lat) {
     );
 
 
-//     const geojson = {
-//       type: 'FeatureCollection',
-//       features: [{
-//         "type": "Feature",
-//         "geometry": {
-//           "type": "Point",
-//           "coordinates": [long, lat]
-//         },
-//         "properties": {
-//           "conc_ana": 20.36156
-//         }
-//       }]
-//     };
-//
-// // add markers to map
-//     geojson.features.forEach(function (marker) {
-//
-//       // create a HTML element for each feature
-//       const el = document.createElement('div');
-//       el.className = 'marker';
-//
-//       // make a marker for each feature and add to the map
-//       new mapboxgl.Marker(el)
-//         .setLngLat(marker.geometry.coordinates)
-//         .addTo(map);
-//
-//
-//       new mapboxgl.Marker(el)
-//         .setLngLat(marker.geometry.coordinates)
-//         .setPopup(new mapboxgl.Popup({offset: 25}) // add popups
-//           .setHTML(`<h3>No2 waarde</h3><p>${  Math.floor(marker.properties.conc_ana)  }</p>`))
-//         .addTo(map);
-//
-//       let noxValue = document.querySelector('.nox-value');
-//       // let noxUnit = document.querySelector('.unit');
-//       let streetName = document.querySelector('.streetName');
-//       let houseNumber = document.querySelector('.houseNumber');
-//       noxValue.innerHTML = Math.floor(marker.properties.conc_ana)+"&micro;g/&#x33a5";
-//       // noxUnit.innerHTML = "&micro;g/&#x33a5";
-//       streetName.innerHTML = streetname;
-//       houseNumber.innerHTML = housenumber;
-//
-//       console.log(marker.properties.conc_ana)
-//
-//     });
+    // fire marker when everything is loaded
+    let loaded = true
+    map.on('idle',function() {
+      if(loaded){
+        console.log('loaded')
+        setMarker();
+        loaded = false;
+      }
+    });
+
 
     //create a HTML element for each feature
-    setTimeout(function () {
-      const el = document.createElement('div');
-      el.className = 'marker';
-      let marker = new mapboxgl.Marker(el).setLngLat([long, lat]);
-      marker.addTo(map);
-      let position = (marker._pos);
-      var features = map.queryRenderedFeatures(position);
-      var displayProperties = ['properties'];
-      var displayFeatures = features.map(function(feat) {
-        var displayFeat = {};
-        displayProperties.forEach(function(prop) {
-          displayFeat[prop] = feat[prop];
-        });
-        return displayFeat;
-      });
-      let noxValue = document.querySelector('.nox-value');
-      let streetName = document.querySelector('.streetName')
-      let houseNumber = document.querySelector('.houseNumber');
-      noxValue.innerHTML = Math.floor(displayFeatures[0].properties.conc_ana)+"&micro;g/&#x33a5";
-      streetName.innerHTML = streetname;
-      houseNumber.innerHTML = housenumber;
+   function setMarker() {
+     const el = document.createElement('div');
+     el.className = 'marker';
+     let marker = new mapboxgl.Marker(el).setLngLat([long, lat]);
+     marker.addTo(map);
+     let position = (marker._pos);
 
-      new mapboxgl.Popup()
-        .setLngLat([long, lat])
-        .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
-        .addTo(map);
+     let features = map.queryRenderedFeatures(position);
+     let displayProperties = ['properties'];
+     let displayFeatures = features.map(function (feat) {
+       let displayFeat = {};
+       displayProperties.forEach(function (prop) {
+         displayFeat[prop] = feat[prop];
+       });
+       return displayFeat;
+     });
+
+     let noxValueBox = document.querySelector('.nox-value');
+     let streetnameBox = document.querySelector('.streetName')
+     let housenumberBox = document.querySelector('.houseNumber');
+     let nox = Math.floor(displayFeatures[1].properties.conc_ana)
+
+     noxValueBox.innerHTML = nox + "&micro;g/&#x33a5";
+     streetnameBox.innerHTML = streetName;
+     housenumberBox.innerHTML = houseNumber;
+
+     new mapboxgl.Popup()
+       .setLngLat([long, lat])
+       .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
+       .addTo(map);
      // console.log(Math.floor(displayFeatures[0].properties.conc_ana));
-    },1000)
+   }
+
+
+    document.querySelector('.ownLocation').addEventListener('click',function () {
+  console.log('fly');
+      map.flyTo({
+        center: [long,lat],
+        zoom: 10,
+        bearing: 0,
+        speed: 0.2, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
+        easing: function(t) {
+          return t;
+        },
+        essential: true
+      });
+    });
 
 
 
@@ -464,12 +257,130 @@ function loadMap(long,lat) {
 
 
 
-
-
   });
+}
+
+
+/**
+ * thermostat page
+ */
+H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
+  checkControls()
+});
+
+checkControls()
+
+function checkControls() {
+  let controls = document.querySelectorAll('.thermostat .controls');
+  if(controls) {
+    for (let i = 0; i < controls.length; i++) {
+      controls[i].addEventListener('click', function () {
+        let state = this.classList;
+        if (state.contains('plus')) {
+          getvalue(state)
+        } else {
+          getvalue(state)
+        }
+      });
+    }
+  }
+}
+
+function getvalue(state) {
+  let tempratureField = document.querySelector('.temprature');
+  let temprature = document.querySelector('.temprature').getAttribute('data-temprature');
+  let unit = '&#xb0;';
+  temprature = Number(temprature);
+  console.log(state.contains('plus'))
+  if (state.contains('plus')) {
+    temprature += 1;
+    document.querySelector('.temprature').setAttribute('data-temprature',temprature);
+  } else {
+    temprature -= 1;
+    document.querySelector('.temprature').setAttribute('data-temprature',temprature);
+  }
+  tempratureField.innerHTML = temprature + unit;
 }
 
 
 
 
+checkControls_shower()
 
+
+function checkControls_shower() {
+  let controls = document.querySelectorAll('.shower .controls');
+  if(controls) {
+    for (let i = 0; i < controls.length; i++) {
+      controls[i].addEventListener('click', function () {
+        let state = this.classList;
+        getvalue(state);
+
+      });
+    }
+  }
+}
+
+function getvalue(state) {
+  let minutes = document.querySelector('.minutes').getAttribute('data-minutes');
+  let minutesFields = document.querySelector('.minutes');
+  let secondsFields = document.querySelector('.seconds');
+  let seconds = document.querySelector('.seconds').getAttribute('data-seconds');
+  minutes = Number(minutes);
+  seconds = Number(seconds);
+
+  if (state.contains('minutPlus')) {
+    minutes += 1;
+    if(minutes < 10){
+      minutes = '0'+minutes;
+    }else if(minutes > 59){
+      minutes = 59;
+    }
+    minutesFields.innerHTML = minutes;
+    document.querySelector('.minutes').setAttribute('data-minutes',minutes);
+
+  }
+  if(state.contains('minutMin')){
+    if(minutes > 0){
+      minutes -=1;
+    }
+    if(minutes < 10){
+      minutesFields.innerHTML = '0'+minutes;
+    }else{
+      minutesFields.innerHTML = minutes;
+    }
+    if(minutes < 1) {
+      console.log('here');
+      seconds = '00';
+    }
+    document.querySelector('.minutes').setAttribute('data-minutes',minutes);
+
+  }
+  if (state.contains('secondsPlus')) {
+    seconds += 1;
+    if(seconds < 10){
+      seconds = '0'+seconds;
+    }else if(seconds > 59){
+      seconds = 59;
+    }
+    secondsFields.innerHTML = seconds;
+    document.querySelector('.seconds').setAttribute('data-seconds',seconds);
+
+  }
+  if(state.contains('secondsMin')){
+    if(seconds > 0){
+      seconds -=1;
+    }
+    if(seconds < 10) {
+      seconds = '0' + seconds;
+    }
+    if(seconds < 1) {
+      console.log('here');
+      seconds = '00';
+    }
+    secondsFields.innerHTML = seconds;
+    document.querySelector('.seconds').setAttribute('data-seconds',seconds);
+  }
+
+
+}

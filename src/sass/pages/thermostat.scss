@@ -1,8 +1,8 @@
-.furnace{
-    background: $stoneGrey;
+.thermostat{
+    background: $screenYellow;
 }
 
-.furnace article{
+.thermostat article{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0.5rem;
@@ -14,9 +14,9 @@
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
-        ". . fields fields fields fields fields fields fields fields . ."
-        ". . fields fields fields fields fields fields fields fields . ."
-        ". . fields fields fields fields fields fields fields fields . ."
+        "wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap"
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
@@ -24,113 +24,219 @@
 
 }
 
-.furnace .information-box{
+.thermostat .information-box{
     grid-area: info-box;
     color: $boxText;
 }
 
-.furnace .pageNumber{
+.thermostat .pageNumber{
     grid-area: page-number;
-    color: $boxText;
-    font-size: 10rem;
-    font-family: title;
-    margin-top: -12px;
 }
 
 
 
-.furnace form{
-    grid-area: fields;
-    justify-content: space-between;
+.thermostat .wrap{
+    grid-area: wrap;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
     //grid-template-rows: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "an1 an1 an2 an2 an3 an3";
+        "thermos thermos thermos";
+
 }
 
-
-.furnace .an1{
-    grid-area: an1;
-}
-
-.furnace .an2{
-    grid-area: an2;
-}
-
-.furnace .an3{
-    grid-area: an3;
-}
-
-.furnace input{
-    margin-left: 50%;
-    margin-bottom: 2rem;
-}
-
-.furnace form span {
-    border-radius: 4px;
-    width: 100%;
-    height: auto;
-}
-
-.furnace form span p{
-    margin-top: 2rem;
-    text-align: center;
+.wrap .controls{
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    border-radius: 100%;
     font-size: 1.4rem;
 }
 
-
-
-.furnace span img{
-    align-items: center;
-    justify-content: center;
-    object-fit: cover;
-    width: 100%;
-    max-height: 50%;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+.wrap .controls:hover{
+    background-color: $nextButtonDarkBlueHover;
+    color: $blank;
 }
 
-.furnace .button{
+.wrap .plus{
+    grid-area: plus;
+}
+
+.wrap .minus{
+    grid-area: minus;
+}
+
+
+.wrap .thermos{
+    grid-area: thermos;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+    "minus  thermostat-icon thermostat-icon thermostat-icon thermostat-icon thermostat-icon thermostat-icon plus";
+}
+
+.wrap .thermostat_icon{
+    grid-area: thermostat-icon;
+    width: 100%;
+}
+
+
+
+.thermostat .circle{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 100%;
+    margin: auto;
+    background-color: #25346c;
+    display: flex;
+}
+
+.thermostat .circle_middle{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 100%;
+    margin: auto;
+    background-color: #dfe5f1;
+    display: flex;
+    z-index: 1;
+}
+
+
+
+.thermostat .circle_middle p{
+    font-size: 5rem;
+    font-family: digital;
+    margin: auto;
+    display: block;
+}
+
+.thermostat .pie_1{
+    width: 17rem;
+    height: 17rem;
+    border-radius: 100%;
+
+    //background-color: #7dbfd9;
+    position: absolute;
+    z-index: 0;
+
+    margin-top: 1.5rem;
+    margin-left:1.5rem;
+
+
+
+}
+
+.thermostat .pie_2{
+    width: 17rem;
+    height: 17rem;
+    border-radius: 100%;
+
+    //background-color: #7dbfd9;
+    position: absolute;
+    z-index: 0;
+
+    margin-top: 1.5rem;
+    margin-left:1.5rem;
+
+    //background-image:
+    //    linear-gradient(to right, transparent 50%, #bc3637 0);
+}
+
+
+.thermostat .pie_3{
+    width: 17rem;
+    height: 17rem;
+    border-radius: 100%;
+
+    //background-color: #7dbfd9;
+    position: absolute;
+    z-index: 0;
+
+    margin-top: 1.5rem;
+    margin-left:1.5rem;
+
+    //background-image:
+    //    linear-gradient(to right, transparent 70%, #bc3637 0);
+}
+
+
+
+
+
+.pie_1::before{
+    content: '';
+    display: block;
+    margin-left: 50%;
+    height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    transform-origin: left;
+    animation: spin 3s linear infinite!important;
+    background-color: #bc3637;
+    transform: rotate(-.5turn)!important;
+}
+
+.pie_2::before{
+    content: '';
+    display: block;
+    margin-left: 50%;
+    height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    transform-origin: left;
+    animation: spin2 3s linear infinite!important;
+    background-color: #fcca4c;
+    transform: rotate(.5turn)!important;
+}
+
+.pie_3::before{
+    content: '';
+    display: block;
+    margin-left: 50%;
+    height: 100%;
+    border-radius: 0 100% 100% 0 / 50%;
+    transform-origin: left;
+    animation: spin3 3.5s linear infinite!important;
+    background-color: #7dbfd9;
+    transform: rotate(.6turn)!important;
+}
+
+
+
+
+@keyframes spin {
+    0% { transform: rotate(.5turn); }
+    100% { transform: rotate(-.5turn); }
+}
+
+@keyframes spin2 {
+    0% { transform: rotate(-.5turn); }
+    100% { transform: rotate(.5turn); }
+}
+
+
+@keyframes spin3 {
+    0% { transform: rotate(.5turn); }
+    100% { transform: rotate(-.5turn); }
+}
+
+
+.thermostat .button{
     grid-area: button;
     color: $boxText;
 }
 
-.furnace .button{
+.thermostat .button{
     background-color: $nextButtonDarkBlue;
 }
 
-.furnace .button:hover{
+.thermostat .button:hover{
     background-color: $nextButtonDarkBlueHover;
-}
-
-
-input[type="radio"] {
-    display:none;
-}
-
-input[type="radio"] + label {
-    color:#f2f2f2;
-    font-family:Arial, sans-serif;
-}
-
-input[type="radio"] + .rdb {
-    display: block;
-    margin: auto;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    vertical-align: middle;
-    background-color: #fff;
-    cursor: pointer;
-    margin-bottom: 1rem;
-}
-
-input[type="radio"]:checked + .rdb {
-    background-color: $nextButtonYellow;
 }
 

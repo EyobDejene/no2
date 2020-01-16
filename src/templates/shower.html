@@ -1,0 +1,65 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div data-router-wrapper>
+  <div  data-router-view="shower">
+    <main class="shower">
+        <section class="grid-shower">
+            <article>
+              <span class="pageNumber">3</span>
+              <div class="information-box">
+                <h1>Hoelang douche jij je gemiddeld per dag?</h1>
+                <p>Stel de tijd in doormiddel van de knoppen</p>
+              </div>
+
+              <!--<button id="submit" class="button">volgende</button>-->
+              <div class="wrap">
+               <div class="showerBase">
+                 <img src="./img/shower.svg">
+                 <div class="rainBase">
+                   <div class="drop d1"></div>
+                   <div class="drop d2"></div>
+                   <div class="drop d3"></div>
+                   <div class="drop d4"></div>
+                   <div class="drop d5"></div>
+                   <div class="drop d6"></div>
+                   <div class="drop d7"></div>
+                   <div class="drop d8"></div>
+                   <div class="drop d9"></div>
+                   <div class="drop d10"></div>
+                   <div class="drop d11"></div>
+                   <div class="drop d12"></div>
+                   <div class="drop d13"></div>
+                   <div class="drop d14"></div>
+                   <div class="drop d15"></div>
+                 </div>
+               </div>
+              </div>
+
+
+              <div class="timer_wrap">
+
+              <button class="controls minutPlus">+</button>
+
+              <button class="controls minutMin">-</button>
+              <button class="controls secondsPlus">+</button>
+
+                <button class="controls secondsMin">-</button>
+
+              <div class="timer">
+                <span data-minutes="00" class="minutes">00</span>
+                <span class="split">:</span>
+                <span data-seconds="00" class="seconds">00</span>
+              </div>
+              </div>
+
+              <a href="shower.html" class="button">volgende</a>
+            </article>
+        </section>
+    </main>
+  </div>
+</div>
+{% endblock %}
