@@ -10,25 +10,43 @@
     grid-template-rows: auto;
     grid-template-areas:
         "page-number info-box info-box info-box info-box info-box info-box info-box . . . ."
-
-        "wrap wrap . . timer timer timer . . . button button";
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        "wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap"
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . button button";
 
 }
+
+.shower .wrap{
+    grid-area: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        ". timer . ";
+}
+
 
 .shower .timer_wrap{
     grid-area: timer;
-    width: auto;
-    text-align: center;
-    display: flex;
-
+    align-self: flex-end;
 }
 
+
 .shower .timer{
-    grid-area: timer;
     width: 15rem;
-    height: 6rem;
+    height: 15rem;
     background-color: #3c3c3b;
-    border-radius: 1rem;
+    border-radius: 100%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -49,26 +67,16 @@
     color: #ffffff;
 }
 
-.shower .timer_wrap .secondsPlus{
-    margin-top: -3.0rem;
-    margin-left: 11%;
-}
-
-.shower .timer_wrap .secondsMin{
-    margin-top: 6.5rem;
-    margin-left: 11%;
-}
-
 
 .shower .timer_wrap .minutPlus{
     margin-top: -3.0rem;
-    margin-left: 3%;
+    margin-left: 6.4rem;
 
 }
 
 .shower .timer_wrap .minutMin{
-    margin-top: 6.5rem;
-    margin-left: 3%;
+    margin-top: 15.5rem;
+    margin-left: 6.4rem;
 }
 
 
@@ -87,38 +95,31 @@
     grid-area: page-number;
 }
 
-.shower .wrap{
-    grid-area: wrap;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.5rem;
-    //grid-template-rows: repeat(6, 1fr);
-    grid-template-rows: auto;
-    grid-template-areas:
-        "shower showerRain .";
-}
+
+
+
 
 
 .shower .showerBase{
-    grid-area: shower;
+
     height: fit-content;
     text-align: center;
     text-decoration: none;
     position: absolute;
     bottom: 0;
     align-self: flex-end;
-    width: 18rem;
+    width: 16rem;
     overflow: hidden;
+    left: 10%;
 
 }
 
 .showerBase .rainBase{
-    grid-area: showerRain;
     position: absolute;
-
     width: 10rem;
     height: 100%;
     left: 41%;
-    top: 10%;
+    top: 0;
     z-index: -1;
 }
 

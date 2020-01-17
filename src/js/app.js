@@ -266,6 +266,7 @@ function loadMap(long,lat) {
  */
 H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
   checkControls()
+  checkControls_shower()
 });
 
 checkControls()
@@ -310,77 +311,41 @@ checkControls_shower()
 
 function checkControls_shower() {
   let controls = document.querySelectorAll('.shower .controls');
+  console.log(controls.length)
   if(controls) {
     for (let i = 0; i < controls.length; i++) {
       controls[i].addEventListener('click', function () {
         let state = this.classList;
-        getvalue(state);
+        getvalueTimer(state);
 
       });
     }
   }
 }
 
-function getvalue(state) {
+function getvalueTimer(state) {
   let minutes = document.querySelector('.minutes').getAttribute('data-minutes');
   let minutesFields = document.querySelector('.minutes');
-  let secondsFields = document.querySelector('.seconds');
-  let seconds = document.querySelector('.seconds').getAttribute('data-seconds');
+  let showerValue = document.querySelector('.timer-value');
   minutes = Number(minutes);
-  seconds = Number(seconds);
 
   if (state.contains('minutPlus')) {
     minutes += 1;
-    if(minutes < 10){
-      minutes = '0'+minutes;
-    }else if(minutes > 59){
+    if(minutes > 59){
       minutes = 59;
     }
     minutesFields.innerHTML = minutes;
     document.querySelector('.minutes').setAttribute('data-minutes',minutes);
-
   }
   if(state.contains('minutMin')){
     if(minutes > 0){
       minutes -=1;
     }
-    if(minutes < 10){
-      minutesFields.innerHTML = '0'+minutes;
-    }else{
-      minutesFields.innerHTML = minutes;
-    }
-    if(minutes < 1) {
-      console.log('here');
-      seconds = '00';
-    }
+    minutesFields.innerHTML = minutes;
     document.querySelector('.minutes').setAttribute('data-minutes',minutes);
-
   }
-  if (state.contains('secondsPlus')) {
-    seconds += 1;
-    if(seconds < 10){
-      seconds = '0'+seconds;
-    }else if(seconds > 59){
-      seconds = 59;
-    }
-    secondsFields.innerHTML = seconds;
-    document.querySelector('.seconds').setAttribute('data-seconds',seconds);
-
-  }
-  if(state.contains('secondsMin')){
-    if(seconds > 0){
-      seconds -=1;
-    }
-    if(seconds < 10) {
-      seconds = '0' + seconds;
-    }
-    if(seconds < 1) {
-      console.log('here');
-      seconds = '00';
-    }
-    secondsFields.innerHTML = seconds;
-    document.querySelector('.seconds').setAttribute('data-seconds',seconds);
-  }
-
-
 }
+
+
+
+
