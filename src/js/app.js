@@ -27,38 +27,38 @@ const H = new Highway.Core({
 
   //let placename = JSON.parse(localStorage.getItem('location')).placename;
 
-
+function checkForm() {
   let form = document.getElementById('submit');
 
-if(form) {
-  form.addEventListener('click', function (evt) {
-    let street = document.getElementById('place').value;
-    let number = document.getElementById('number').value;
-    let postalcode = document.getElementById('postalcode').value;
-    evt.preventDefault()
-    if(street && number && postalcode !== "") {
-      getGeoCode(street, number, postalcode)
-        .then(data => {
-          // console.log(data)
-          if (data == false) {
-            let message = "Geen data gevonden voor deze locatie.";
-            let boxMessage = document.querySelector('.message');
-            boxMessage.innerHTML = message;
-          } else {
-            console.log(data)
-            window.location.href = '/explore.html?place=' + street + '&number=' + number + '&postalcode=' + postalcode;
-          }
-        });
-    }else{
-      let message = "Niet alle velden zijn ingevuld.";
-      let boxMessage = document.querySelector('.message');
-      boxMessage.innerHTML = message;
-    }
+  if (form) {
+    form.addEventListener('click', function (evt) {
+      let street = document.getElementById('place').value;
+      let number = document.getElementById('number').value;
+      let postalcode = document.getElementById('postalcode').value;
+      evt.preventDefault()
+      if (street && number && postalcode !== "") {
+        getGeoCode(street, number, postalcode)
+          .then(data => {
+            // console.log(data)
+            if (data == false) {
+              let message = "Geen data gevonden voor deze locatie.";
+              let boxMessage = document.querySelector('.message');
+              boxMessage.innerHTML = message;
+            } else {
+              console.log(data)
+              window.location.href = '/explore.html?place=' + street + '&number=' + number + '&postalcode=' + postalcode;
+            }
+          });
+      } else {
+        let message = "Niet alle velden zijn ingevuld.";
+        let boxMessage = document.querySelector('.message');
+        boxMessage.innerHTML = message;
+      }
 
-  });
+    });
+  }
+
 }
-
-
 
 
 
@@ -284,6 +284,8 @@ H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
   checkControls();
   checkControls_shower();
   barchart();
+  checkForm();
+  furnace();
 
   let tempStored = JSON.parse(localStorage.getItem('thermostat'));
   if(tempStored) {
@@ -297,14 +299,16 @@ H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
       furnace();
     })
   }
-  furnace();
+
 
 });
 
-
-barchart();
 checkControls();
+checkControls_shower();
+barchart();
 furnace();
+checkForm();
+
 let tempStored = JSON.parse(localStorage.getItem('thermostat'));
 if(tempStored) {
   tempStored = tempStored.temprature;
@@ -367,7 +371,6 @@ function getvalue(state) {
 /**
  * Shower settings
  */
-checkControls_shower()
 function checkControls_shower() {
   let controls = document.querySelectorAll('.shower .controls');
   if(controls) {
