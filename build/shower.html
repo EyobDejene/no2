@@ -8,12 +8,13 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" media="all" href="css/app.css" />
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
   </head>
   <body>
     <!-- BEGIN content -->
     <div class="out">
       <div data-router-wrapper>
-        <div data-router-view="shower">
+        <div data-router-view="shower" class="page">
           <main class="shower">
             <section class="grid-shower">
               <article>
@@ -21,6 +22,12 @@
                 <div class="information-box">
                   <h1>Hoelang douche jij je gemiddeld per dag?</h1>
                   <p>Stel de tijd in doormiddel van de knoppen</p>
+                </div>
+                <div class="page-information">
+                  <div class="information">
+                  </div>
+                  <h1>Informatie</h1>
+                  <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een huishouden</p>
                 </div>
                 <!--<button id="submit" class="button">volgende</button>-->
                 <div class="wrap">
@@ -51,8 +58,14 @@
                       <span data-minutes="0" class="minutes">0</span>
                     </div>
                   </div>
+                  <a href="travel.html" class="button">volgende</a>
                 </div>
-                <a href="travel.html" class="button">volgende</a>
+                <div class="pagination-container">
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                  <a class="pagination" href="#"><span class="pagination-circle"></span></a>
+                </div>
               </article>
             </section>
           </main>

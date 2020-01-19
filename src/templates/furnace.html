@@ -5,7 +5,7 @@ title: Index page
 
 {% block content %}
 <div data-router-wrapper>
-  <div  data-router-view="furnace">
+  <div data-router-view="furnace" class="page">
     <main class="furnace">
         <section class="grid-furnace">
             <article>
@@ -14,10 +14,20 @@ title: Index page
                 <h1>Wat voor een kookplaat gebruik je om op te koken?</h1>
                 <p>Maak een keuze uit een van de volgende opties.</p>
               </div>
+
+
+              <div class="page-information">
+                <div class="information">
+                </div>
+                <h1>Informatie</h1>
+                <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een
+                  huishouden</p>
+              </div>
+
               <form>
                 <div class="option an1">
                   <label>
-                    <input type="radio" name="type_furnace" value="inductie"/>
+                    <input type="radio" name="type_furnace" class="radioOptions" value="inductie"/>
                     <span class="rdb"></span>
                     <span>
                     <img src="./img/inductie.svg">
@@ -28,7 +38,7 @@ title: Index page
 
                 <div class="option an2">
                 <label>
-                  <input type="radio" name="type_furnace" value="gas"/>
+                  <input type="radio" name="type_furnace" class="radioOptions" value="gas"/>
                   <span class="rdb"></span>
                   <span>
                     <img src="./img/gas.svg">
@@ -39,7 +49,7 @@ title: Index page
 
                 <div class="option an3">
                   <label>
-                    <input type="radio" name="type_furnace" value="keramisch"/>
+                    <input type="radio" name="type_furnace" class="radioOptions" value="keramisch"/>
                     <span class="rdb"></span>
                     <span>
                     <img src="./img/keramisch.svg">
@@ -47,8 +57,14 @@ title: Index page
                     </span>
                   </label>
                 </div>
+                <a href="thermostat.html" class="button">volgende</a>
               </form>
-              <a href="thermostat.html" class="button">volgende</a>
+              <div class="pagination-container">
+                <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                <a class="pagination" href="#"><span class="pagination-circle"></span></a>
+                <a class="pagination" href="#"><span class="pagination-circle"></span></a>
+                <a class="pagination" href="#"><span class="pagination-circle"></span></a>
+              </div>
               <!--<button id="submit" class="button">volgende</button>-->
             </article>
         </section>

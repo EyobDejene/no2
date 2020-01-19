@@ -1,7 +1,13 @@
 import mapboxgl from 'mapbox-gl';
 import Highway from '@dogstudio/highway';
 import Fade from './fade';
+// import Slide from './slide';
 import {getGeoCode} from './geocode';
+import {barchart} from './barchart';
+import {furnace} from './furnace';
+import {thermostat} from './thermostat';
+
+
 const queryString = require('query-string');
 
 const H = new Highway.Core({
@@ -9,6 +15,7 @@ const H = new Highway.Core({
     default: Fade
   }
 });
+
 
 
   const parsed = queryString.parse(location.search);
@@ -21,26 +28,33 @@ const H = new Highway.Core({
   //let placename = JSON.parse(localStorage.getItem('location')).placename;
 
 
-  let form = document.getElementById('location');
+  let form = document.getElementById('submit');
 
 if(form) {
-  form.addEventListener('submit', function (evt) {
+  form.addEventListener('click', function (evt) {
     let street = document.getElementById('place').value;
     let number = document.getElementById('number').value;
     let postalcode = document.getElementById('postalcode').value;
     evt.preventDefault()
-    getGeoCode(street,number,postalcode)
-      .then(data => {
-        // console.log(data)
-        if (data == false) {
-          let message = "Geen data gevonden voor deze locatie.";
-          let boxMessage = document.querySelector('.message');
-          boxMessage.innerHTML = message;
-        } else {
-           console.log(data)
-            window.location.href = '/explore.html?place='+street+'&number='+number+'&postalcode='+postalcode;
-        }
-      });
+    if(street && number && postalcode !== "") {
+      getGeoCode(street, number, postalcode)
+        .then(data => {
+          // console.log(data)
+          if (data == false) {
+            let message = "Geen data gevonden voor deze locatie.";
+            let boxMessage = document.querySelector('.message');
+            boxMessage.innerHTML = message;
+          } else {
+            console.log(data)
+            window.location.href = '/explore.html?place=' + street + '&number=' + number + '&postalcode=' + postalcode;
+          }
+        });
+    }else{
+      let message = "Niet alle velden zijn ingevuld.";
+      let boxMessage = document.querySelector('.message');
+      boxMessage.innerHTML = message;
+    }
+
   });
 }
 
@@ -186,18 +200,20 @@ function loadMap(long,lat) {
      });
 
      let noxValueBox = document.querySelector('.nox-value');
-     let streetnameBox = document.querySelector('.streetName')
-     let housenumberBox = document.querySelector('.houseNumber');
-     let nox = Math.floor(displayFeatures[1].properties.conc_ana)
+     if(noxValueBox) {
+       let streetnameBox = document.querySelector('.streetName')
+       let housenumberBox = document.querySelector('.houseNumber');
+       let nox = Math.floor(displayFeatures[1].properties.conc_ana)
 
-     noxValueBox.innerHTML = nox + "&micro;g/&#x33a5";
-     streetnameBox.innerHTML = streetName;
-     housenumberBox.innerHTML = houseNumber;
+       noxValueBox.innerHTML = nox + "&micro;g/&#x33a5";
+       streetnameBox.innerHTML = streetName;
+       housenumberBox.innerHTML = houseNumber;
 
-     new mapboxgl.Popup()
-       .setLngLat([long, lat])
-       .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
-       .addTo(map);
+       new mapboxgl.Popup()
+         .setLngLat([long, lat])
+         .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
+         .addTo(map);
+     }
      // console.log(Math.floor(displayFeatures[0].properties.conc_ana));
    }
 
@@ -262,16 +278,52 @@ function loadMap(long,lat) {
 
 
 /**
- * thermostat page
+ * when load page
  */
 H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
-  checkControls()
-  checkControls_shower()
+  checkControls();
+  checkControls_shower();
+  barchart();
+
+  let tempStored = JSON.parse(localStorage.getItem('thermostat'));
+  if(tempStored) {
+    tempStored = tempStored.temprature;
+    thermostat(tempStored);
+  }
+
+  const buttons = document.querySelectorAll(".radioOptions")
+  for (const button of buttons) {
+    button.addEventListener('click', function () {
+      furnace();
+    })
+  }
+  furnace();
+
 });
 
-checkControls()
 
+barchart();
+checkControls();
+furnace();
+let tempStored = JSON.parse(localStorage.getItem('thermostat'));
+if(tempStored) {
+  tempStored = tempStored.temprature;
+  thermostat(tempStored);
+}
+
+/**
+ * Thermostat
+ */
 function checkControls() {
+  let tempStored = JSON.parse(localStorage.getItem('thermostat'));
+  let tempratureField =  document.querySelector('.temprature');
+  if(tempStored && tempratureField) {
+    tempStored = tempStored.temprature;
+    let unit = '&#xb0;';
+    tempratureField.setAttribute('data-temprature', tempStored);
+    tempratureField.innerHTML = tempStored + unit;
+  }
+
   let controls = document.querySelectorAll('.thermostat .controls');
   if(controls) {
     for (let i = 0; i < controls.length; i++) {
@@ -292,26 +344,32 @@ function getvalue(state) {
   let temprature = document.querySelector('.temprature').getAttribute('data-temprature');
   let unit = '&#xb0;';
   temprature = Number(temprature);
-  console.log(state.contains('plus'))
   if (state.contains('plus')) {
-    temprature += 1;
-    document.querySelector('.temprature').setAttribute('data-temprature',temprature);
+    if (temprature == 90){
+      temprature = 90;
+    }else {
+      temprature += 1;
+      document.querySelector('.temprature').setAttribute('data-temprature', temprature);
+    }
   } else {
-    temprature -= 1;
-    document.querySelector('.temprature').setAttribute('data-temprature',temprature);
+    if (temprature == 0){
+      temprature = 0;
+    } else {
+      temprature -= 1;
+      document.querySelector('.temprature').setAttribute('data-temprature', temprature);
+    }
   }
   tempratureField.innerHTML = temprature + unit;
+  thermostat(temprature)
 }
 
 
-
-
+/**
+ * Shower settings
+ */
 checkControls_shower()
-
-
 function checkControls_shower() {
   let controls = document.querySelectorAll('.shower .controls');
-  console.log(controls.length)
   if(controls) {
     for (let i = 0; i < controls.length; i++) {
       controls[i].addEventListener('click', function () {
@@ -347,5 +405,42 @@ function getvalueTimer(state) {
 }
 
 
+let informationIcon = document.querySelector('.information');
+let pageInformation = document.querySelector('.page-information');
+if(pageInformation) {
+  informationIcon.addEventListener('click', function () {
+    if (pageInformation.classList.contains('active')) {
+      pageInformation.classList.remove('active');
+    } else {
+      pageInformation.classList.add('active');
+    }
+
+  });
+
+}
 
 
+/**
+ *
+ * furnace
+ */
+
+const buttons = document.querySelectorAll(".radioOptions");
+for (const button of buttons) {
+  button.addEventListener('click', function () {
+    furnace();
+  })
+}
+
+
+
+
+
+
+
+
+// function initData() {
+//   let DataoObject = {furnace: "", thermostat: "", shower: "", travel: ""};
+//   localStorage.setItem('data', JSON.stringify(DataoObject));
+// }
+// initData()

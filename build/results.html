@@ -14,18 +14,26 @@
     <!-- BEGIN content -->
     <div class="out">
       <div data-router-wrapper>
-        <div data-router-view="introduction" class="page">
-          <main class="introduction">
-            <section class="grid-information">
+        <div data-router-view="results" class="page">
+          <main class="results">
+            <section class="grid-results">
               <article>
                 <div class="information-box">
-                  <h1>Wat is NO2?</h1>
-                  <p>Stikstof dioxide is een gas dat ontstaat bij een verbrandings reactie. voorbeelden waar zo een reactie plaatsvind zijn onder anderen auto’s fabrieken en koken op aardgas. </p>
-                  <a class="button" href="location.html">volgende</a>
+                  <h1>Hier zijn jou test resultaten.</h1>
+                  <p>Jij stoot ... ug/m3 uit per week.</p>
+                  <div class="page-information">
+                    <div class="information">
+                    </div>
+                    <h1>Informatie</h1>
+                    <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een huishouden</p>
+                  </div>
                 </div>
-                <figure>
-                  <img src="./img/no2.svg">
-                </figure>
+                <div class="wrap container">
+                  <div class="widget">
+                    <div id="chart"></div>
+                  </div>
+                </div>
+                <a href="advise.html" class="button">advies</a>
               </article>
             </section>
           </main>

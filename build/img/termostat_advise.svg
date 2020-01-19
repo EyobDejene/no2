@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#25346C;}
+	.st1{fill:#7EBFD9;}
+	.st2{fill:#C03636;}
+	.st3{fill:#FCCA4C;}
+	.st4{fill:#DFE5F2;}
+	.st5{fill:none;}
+	.st6{font-family:'VT323-Regular';}
+	.st7{font-size:220px;}
+	.st8{font-size:120px;}
+</style>
+<g id="Laag_2">
+	<circle class="st0" cx="989.1" cy="540" r="407.4"/>
+</g>
+<g id="warmte_kleur">
+	<g>
+		<path class="st1" d="M991.4,540L813.2,785.2C737.5,730.1,688.3,640.8,688.3,540c0-32.7,5.2-64.2,14.8-93.7L991.4,540z"/>
+		<path class="st2" d="M1279.8,446.3L991.4,540V236.8C1126.1,236.8,1240.3,324.7,1279.8,446.3z"/>
+		<path class="st3" d="M991.4,236.8V540L703,446.3C742.5,324.7,856.7,236.8,991.4,236.8z"/>
+	</g>
+</g>
+<g id="display">
+	<circle class="st4" cx="987.8" cy="541.3" r="278.6"/>
+	<rect x="831.4" y="478.3" class="st5" width="304.5" height="158.2"/>
+	<text transform="matrix(1 0 0 1 895.6752 601.495)" class="st6 st7">17 </text>
+	<rect x="991.7" y="407.8" class="st5" width="222.4" height="129.9"/>
+	<text transform="matrix(1 0 0 1 1078.8682 475.018)" class="st6 st8">o</text>
+</g>
+</svg>

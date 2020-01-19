@@ -9,7 +9,7 @@
     //grid-template-rows: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "page-number info-box info-box info-box info-box info-box info-box . . . . ."
+        "page-number info-box info-box info-box info-box info-box info-box . . . .  ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
@@ -20,7 +20,7 @@
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
-        ". . . . . . . . . . button button";
+        ". . . . . . . . . . pagination pagination";
 
 }
 
@@ -37,7 +37,7 @@
 
 .furnace form{
     grid-area: fields;
-    width: 80%;
+    width: 70%;
     margin: auto;
     justify-content: space-between;
     display: grid;
@@ -46,7 +46,8 @@
     //grid-template-rows: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "an1 an1 an2 an2 an3 an3";
+        "an1 an1 an2 an2 an3 an3"
+        ". .  button button . .";
 }
 
 
@@ -125,7 +126,7 @@ input[type="radio"] + .rdb {
     vertical-align: middle;
     background-color: #fff;
     cursor: pointer;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 input[type="radio"]:checked + .rdb {

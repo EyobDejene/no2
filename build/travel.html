@@ -8,12 +8,13 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" media="all" href="css/app.css" />
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
   </head>
   <body>
     <!-- BEGIN content -->
     <div class="out">
       <div data-router-wrapper>
-        <div data-router-view="travel">
+        <div data-router-view="travel" class="page">
           <main class="travel">
             <section class="grid-travel">
               <article>
@@ -21,6 +22,12 @@
                 <div class="information-box">
                   <h1>Hoevaak per week gebruik je deze vervoersmiddelen?</h1>
                   <p>Selecteer de voertuigen </p>
+                </div>
+                <div class="page-information">
+                  <div class="information">
+                  </div>
+                  <h1>Informatie</h1>
+                  <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een huishouden</p>
                 </div>
                 <!--<button id="submit" class="button">volgende</button>-->
                 <div class="wrap">
@@ -84,8 +91,14 @@
                     </div>
                     <div class="icon"><img src="./img/scooter.svg"></div>
                   </div>
+                  <a href="results.html" class="button">volgende</a>
                 </div>
-                <a href="shower.html" class="button">volgende</a>
+                <div class="pagination-container">
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                  <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+                </div>
               </article>
             </section>
           </main>

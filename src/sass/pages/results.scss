@@ -1,0 +1,106 @@
+.results{
+    background: $amsterdamRed;
+}
+
+.results article{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box"
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". chart chart chart chart chart chart chart chart chart chart ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . button button";
+
+}
+
+.results .information-box{
+    grid-area: info-box;
+    color: $boxText;
+}
+
+.shower .pageNumber{
+    grid-area: page-number;
+}
+
+
+
+.results .wrap{
+    grid-area: chart;
+
+}
+
+.results .button{
+    grid-area: button;
+    color: $boxText;
+}
+
+.results .button{
+    background-color: $nextButtonYellow;
+}
+
+.results .button:hover{
+    background-color: $nextButtonYellowHover;
+}
+
+.widget {
+    display: inline-block;
+    /* border: 1px solid #aaa; */
+    /* background: #fff; */
+    width: 100%;
+}
+
+#chart {
+    width: 100%;
+    height: 100%;
+}
+
+svg {
+    shape-rendering: crispEdges;
+}
+
+.bar {
+    fill: #ffffff;
+}
+
+.value {
+    fill: #ffffff;
+    font-family: title;
+    font-size: .8rem;
+}
+
+.tick text{
+    fill: #ffffff;
+    font-family: paragraph;
+    font-size: 1rem;
+}
+
+.results .label {
+
+    fill: #ffffff;
+    font-family: title;
+    font-size: 1.2rem;
+}
+
+.axis {
+    path {
+        fill: none;
+        //stroke: #333;
+    }
+    .tick line {
+        stroke-width: 1;
+        stroke: rgba(0,0,0,0.1);
+    }
+    //fill: #333;
+    font-size: 12px;
+}
