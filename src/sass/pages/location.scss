@@ -6,11 +6,18 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0.5rem;
-    grid-template-rows: repeat(6, 1fr);
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
     grid-template-areas:
         "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box"
         ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
         ". . fields fields fields fields fields fields fields fields . ."
+        ". . fields fields fields fields fields fields fields fields . ."
+        ". . messageBox messageBox messageBox messageBox messageBox messageBox messageBox messageBox . ."
+        ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . button button";
@@ -22,47 +29,100 @@
     color: $boxText;
 }
 
-.location button{
+.location .button{
     grid-area: button;
     color: $boxText;
 }
 
-.location button{
+.location .button{
     background-color: $nextButtonYellow;
 }
 
-.location button:hover{
+.location .button:hover{
     background-color: $nextButtonYellowHover;
 }
 
 
 .location .fields{
     grid-area: fields;
-    display: flex;
     justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+    "place place place number number postalcode ";
 }
+
+
 
 
 .location input{
     box-sizing: border-box;
     display: inline-block;
-    padding: 1rem;
-    font-size: 1.4rem;
+    padding: 1.5rem;
+    font-size: 1.2rem;
     font-family: paragraph;
     border-radius: 0.3rem;
 
 }
 
+form label {
+    position: relative;
+    display: block;
+    padding-bottom: 1rem;
+    color: $blank;
+    font-family: title;
+}
+
+.location .livingplace{
+    grid-area: place;
+}
+
+.location .housenumber{
+    grid-area: number;
+}
+
+
+.location .postalcode{
+    grid-area: postalcode;
+}
+
+
 .location .fields .place{
-    width: 64%;
+    width: 100%;
+    align-items: flex-start;
 }
 
 .location .fields .number{
-    width: 35%;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.location .fields .postalcode{
+    width: 100%;
     align-items: flex-end;
 }
 
 
 
+.location .group{
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0.1rem;
+}
+
+
+.messageBox{
+    grid-area: messageBox;
+    width: 100%;
+    position: relative;
+}
+
+.messageBox .message{
+    color: $blank;
+}
 
 

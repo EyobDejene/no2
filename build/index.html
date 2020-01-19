@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -8,18 +7,24 @@
     <meta name="theme-color" content="#fff" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" media="all" href="css/app.css" />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
   </head>
   <body>
     <!-- BEGIN content -->
     <div class="out">
-      <main data-router-wrapper class="home">
-        <section>
-          <article data-router-view="home">
-            <img src="./img/logo-amsterdam.svg" class="logo-amsterdam" alt="logo-amsterdam" />
-            <img src="./img/logo-knmi.svg" class="logo-knmi" alt="logo-knmi" />
-          </article>
-        </section>
-      </main>
+      <div data-router-wrapper>
+        <div data-router-view="home" class="page">
+          <main class="home">
+            <section>
+              <article>
+                <img src="./img/logo-amsterdam.svg" class="logo-amsterdam" alt="logo-amsterdam" />
+                <img src="./img/logo-knmi.svg" class="logo-knmi" alt="logo-knmi" />
+              </article>
+            </section>
+          </main>
+        </div>
+      </div>
     </div>
     <!-- END content -->
     <!-- BEGIN scripts -->

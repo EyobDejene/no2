@@ -94,6 +94,11 @@ function createConfig(env) {
         { test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader', exclude: /node_modules/ }
         ],
     },
+    node: {
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty',
+    },
   };
 
   if (isProduction) {

@@ -6,14 +6,14 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 0.5rem;
-    grid-template-rows: repeat(6, 1fr);
+    grid-auto-rows: auto;
     grid-template-areas:
-        ". . . . . . . . . . . ."
         "figure figure figure figure figure figure info-box info-box info-box info-box info-box ."
         "figure figure figure figure figure figure info-box info-box info-box info-box info-box ."
         "figure figure figure figure figure figure info-box info-box info-box info-box info-box ."
         "figure figure figure figure figure figure info-box info-box info-box info-box info-box ."
-        ". . . . . . . . . . . .";
+        "figure figure figure figure figure figure info-box info-box info-box info-box info-box ."
+        "figure figure figure figure figure figure info-box info-box info-box info-box info-box .";
 
 }
 
@@ -27,8 +27,9 @@
     align-self: center;
     display: flex;
     flex-direction: column;
-
 }
+
+
 
 .introduction .information-box{
     grid-area: info-box;
@@ -40,12 +41,12 @@
 }
 
 
-.introduction .information-box button{
+.introduction .information-box .button{
     width: 50%;
+    align-self: flex-start;
     background-color: $nextButtonYellow;
 }
 
-.introduction .information-box button:hover{
+.introduction .information-box .button:hover{
     background-color: $nextButtonYellowHover;
 }
-

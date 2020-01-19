@@ -1,0 +1,63 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div data-router-wrapper>
+  <div  data-router-view="thermostat" class="page">
+    <main class="thermostat">
+      <section class="grid-thermostat">
+        <article>
+          <span class="pageNumber">2</span>
+          <div class="information-box">
+            <h1>Hoe hoog staat jouw thermostaat ?</h1>
+            <p>Stel de temperatuur in doormiddel van de knoppen</p>
+          </div>
+
+          <div class="page-information">
+            <div class="information">
+            </div>
+            <h1>Informatie</h1>
+            <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een
+              huishouden</p>
+          </div>
+
+          <!--<button id="submit" class="button">volgende</button>-->
+          <div class="wrap">
+            <div class="thermos">
+              <button class="controls minus">-</button>
+              <div class="thermostat_icon">
+
+                <!--<img src="./img/thermostat.svg">-->
+                <div class="circle">
+                  <div class="pie_1"></div>
+                  <div class="pie_2"></div>
+                  <div class="pie_3"></div>
+                  <div class="circle_middle">
+                    <p class="temprature" data-temprature="20">20&#xb0;</p>
+                  </div>
+                </div>
+              </div>
+              <button class="controls plus">+</button>
+
+
+            </div>
+
+            <a href="shower.html" class="button">volgende</a>
+          </div>
+          <div class="pagination-container">
+            <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+            <a class="pagination" href="#"><span class="pagination-circle active"></span></a>
+            <a class="pagination" href="#"><span class="pagination-circle"></span></a>
+            <a class="pagination" href="#"><span class="pagination-circle"></span></a>
+          </div>
+
+
+
+        </article>
+      </section>
+    </main>
+  </div>
+</div>
+{% endblock %}

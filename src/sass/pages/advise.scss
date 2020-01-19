@@ -1,0 +1,103 @@
+.advise{
+    background: $coolBlue;
+}
+
+.advise article{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "info-box info-box info-box info-box info-box info-box info-box . . . . ."
+
+        "wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap"
+        ". . . . . . . . . . button button";
+
+}
+
+.advise .information-box{
+    grid-area: info-box;
+    color: $boxText;
+
+}
+
+.advise .information-box p{
+    font-size: 1.4rem;
+}
+
+.advise .button{
+    grid-area: button;
+    color: $boxText;
+}
+
+.advise .button{
+    background-color: $nextButtonYellow;
+}
+
+.advise .button:hover{
+    background-color: $nextButtonYellowHover;
+}
+
+
+.advise .wrap{
+    grid-area: wrap;
+}
+
+
+.advise .text-item{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    //grid-template-rows: repeat(0.5, 1fr);
+    grid-template-rows: 9rem;
+    grid-template-areas:
+        "figure  figure  textbox textbox textbox textbox textbox textbox textbox textbox textbox textbox";
+
+}
+.advise .text-item .figure{
+    grid-area: figure;
+    width: 8rem;
+    max-height: 50%;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.advise .text-item .textbox{
+    grid-area: textbox;
+    justify-content: center;
+    object-fit: contain;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+
+}
+
+.advise .text-item .textbox h1{
+    font-family: title;
+    font-size: 1.4rem;
+}
+
+.advise .text-item .textbox p{
+    font-family: paragraph;
+    font-size: 1.2rem;
+}
+
+
+.messageBox{
+    grid-area: messageBox;
+    width: 100%;
+    position: relative;
+}
+
+.messageBox .message{
+    color: $blank;
+}
+
+

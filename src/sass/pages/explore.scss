@@ -1,0 +1,120 @@
+.explore{
+    background: #4e2c59;
+}
+
+.explore .information-box{
+    grid-area: info-box;
+    color: $boxText;
+}
+
+.explore section{
+    pointer-events: none;
+}
+
+.explore article{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 0.5rem;
+    grid-auto-rows: auto;
+    grid-template-areas:
+        "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box"
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        ". . . . . . . . . . . ."
+        "legend legend legend . . . . . . . button button";
+}
+
+
+.explore .button{
+    pointer-events: auto!important;
+    grid-area: button;
+    color: $boxText;
+
+}
+
+.explore .session{
+    grid-area: legend;
+}
+
+.explore .button{
+    background-color: $nextButtonYellow;
+}
+
+.explore .button:hover{
+    background-color: $nextButtonYellowHover;
+}
+
+.explore #map{
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    z-index: -2;
+}
+
+.explore .marker {
+    background-image: url('../img/mapbox-icon-amsterdam.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    z-index: 5!important;
+}
+
+
+.explore .nox-value, .explore .unit
+{
+    font-family: title;
+    margin-left: 0.5rem;
+}
+
+.explore .unit{
+    display: inline-block;
+    margin-left: 0.3rem;
+}
+
+
+
+.explore .session {
+    background-color: $blank;
+    padding: 0.8rem;
+    height: fit-content;
+    pointer-events: auto;
+    align-self: flex-end;
+
+}
+
+.explore .row {
+    height: 12px;
+    width: 100%;
+}
+
+.explore .row .label p{
+    text-align: start;
+}
+
+
+.explore .colors {
+    background: linear-gradient(to right, #f3ba0c, #cc090d, #091137);
+    margin-bottom: 5px;
+}
+
+.explore .label {
+    width: 15%;
+    display: inline-block;
+    text-align: center;
+}
+
+.ownLocation{
+    pointer-events: auto;
+    cursor: pointer;
+}

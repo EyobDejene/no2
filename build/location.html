@@ -1,4 +1,3 @@
-<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -8,25 +7,51 @@
     <meta name="theme-color" content="#fff" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" media="all" href="css/app.css" />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.css' rel='stylesheet' />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
   </head>
   <body>
     <!-- BEGIN content -->
     <div class="out">
-      <main data-router-wrapper class="location">
-        <section class="grid-location">
-          <article data-router-view="location">
-            <div class="information-box">
-              <h1>Hoeveel stikstof is in jouw buurt?</h1>
-              <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
-            </div>
-            <div class="fields">
-              <input type="text" placeholder="Oudeschans" value="" name="place" class="place">
-              <input type="text" placeholder="122" value="" name="number" class="number">
-            </div>
-            <button>volgende</button>
-          </article>
-        </section>
-      </main>
+      <div data-router-wrapper>
+        <div data-router-view="location" class="page">
+          <main class="location">
+            <section class="grid-location">
+              <article>
+                <div class="information-box">
+                  <h1>Hoeveel stikstof is in jouw buurt?</h1>
+                  <p>Vul hier je adres in zodat je een inzicht krijgt over de NO2 waarde in jouw buurt.</p>
+                </div>
+                <div class="page-information">
+                  <div class="information">
+                  </div>
+                  <h1>Informatie</h1>
+                  <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een huishouden</p>
+                </div>
+                <form id="location" method="get" action="explore.html" class="fields">
+                  <div class="group livingplace">
+                    <label for="place">Straatnaam</label>
+                    <input id="place" type="text" placeholder="straatnaam" value="" name="place" class="place">
+                  </div>
+                  <div class="group housenumber">
+                    <label for="number">Huisnummer</label>
+                    <input id="number" type="text" placeholder="huisnummer" value="" name="number" class="number">
+                  </div>
+                  <div class="group postalcode">
+                    <label for="number">Postcode</label>
+                    <input id="postalcode" type="text" placeholder="postcode" value="" name="postalcode" class="postalcode">
+                  </div>
+                </form>
+                <div class="messageBox">
+                  <p class="message"></p>
+                </div>
+                <input form="location" id="submit" class="button" type="submit" value="volgende" />
+                <!--<button id="submit" class="button">volgende</button>-->
+              </article>
+            </section>
+          </main>
+        </div>
+      </div>
     </div>
     <!-- END content -->
     <!-- BEGIN scripts -->

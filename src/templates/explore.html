@@ -1,0 +1,52 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div data-router-wrapper>
+  <div data-router-view="explore" class="page">
+    <main class="explore">
+        <section class="grid-explore">
+            <article>
+              <div class="information-box">
+                <h1>Stikstofwaardes in jouw buurt</h1>
+                <div class="ownLocation">
+                <p>
+                  <span class="streetName"></span>
+                  <span class="houseNumber"></span>
+                  <span class="nox-value"></span>
+                  <span class="unit"></span>
+                </p>
+                </div>
+              </div>
+
+
+              <div class="page-information">
+                <div class="information">
+                </div>
+                <h1>Informatie</h1>
+                <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een
+                  huishouden</p>
+              </div>
+
+              <div class="session">
+                <div class="row colors">
+                </div>
+                <div class="row labels">
+                  <div class="label"><p>0</p></div>
+                  <div class="label"><p>10</p></div>
+                  <div class="label"><p>20</p></div>
+                  <div class="label"><p>30</p></div>
+                  <div class="label"><p>40</p></div>
+                  <div class="label"><p>50+</p></div>
+                </div>
+              </div>
+              <a class="button" href="footprint.html">volgende</a>
+            </article>
+        </section>
+      <div id="map"></div>
+    </main>
+  </div>
+</div>
+{% endblock %}

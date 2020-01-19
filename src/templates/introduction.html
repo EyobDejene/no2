@@ -4,21 +4,25 @@ title: Index page
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-<main data-router-wrapper class="introduction">
-    <section class="grid-information">
-        <article data-router-view="introduction">
-          <div class="information-box">
-            <h1>Wat is NO2?</h1>
-            <p>Stikstof dioxide is een gas dat ontstaat bij een verbrandings reactie.
-              voorbeelden waar zo een reactie plaatsvind zijn onder anderen auto’s fabrieken en koken op aardgas.
-            </p>
-            <button>volgende</button>
-          </div>
-          <figure>
-            <img src="./img/no2.svg">
-          </figure>
+<div data-router-wrapper>
+  <div data-router-view="introduction" class="page">
+    <main  class="introduction">
+        <section class="grid-information">
+            <article>
+              <div class="information-box">
+                <h1>Wat is NO2?</h1>
+                <p>Stikstof dioxide is een gas dat ontstaat bij een verbrandings reactie.
+                  voorbeelden waar zo een reactie plaatsvind zijn onder anderen auto’s fabrieken en koken op aardgas.
+                </p>
+                <a class="button" href="location.html">volgende</a>
+              </div>
+              <figure>
+                <img src="./img/no2.svg">
+              </figure>
 
-        </article>
-    </section>
-</main>
+            </article>
+        </section>
+    </main>
+  </div>
+</div>
 {% endblock %}
