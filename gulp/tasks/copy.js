@@ -33,8 +33,8 @@ gulp.task('copy:rootfiles', () => gulp
   .pipe(gulp.dest(config.dest.root))
 );
 
-const build = gulp => gulp.series('copy:img', 'copy:fonts');
-const watch = gulp => () => gulp.watch(config.src.img + '/*', gulp.parallel('copy:img', 'copy:fonts'));
+const build = gulp => gulp.series('copy:img', 'copy:fonts','copy:data');
+const watch = gulp => () => gulp.watch(config.src.img + '/*', gulp.parallel('copy:img', 'copy:fonts','copy:data'));
 
 module.exports.build = build;
 module.exports.watch = watch;
