@@ -110,7 +110,7 @@ function loadMap(long,lat) {
       "type": "geojson",
       // "data": "data/convertcsv.geojson",
       //"data": "data/mean_no2.geojson",
-       "data": "http://oege.ie.hva.nl/~westere6/no2/mean_no2.geojson",
+       "data": "https://oege.ie.hva.nl/~westere6/no2/mean_no2.geojson",
       "maxzoom": 15
     });
 
