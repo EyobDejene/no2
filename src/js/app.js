@@ -105,7 +105,7 @@ function loadMap(long,lat) {
   });
 
 
-  map.on('style.load', function () {
+  map.on('load', function () {
     map.addSource('heatmap', {
       "type": "geojson",
       // "data": "data/convertcsv.geojson",
