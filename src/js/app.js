@@ -110,7 +110,7 @@ function loadMap(long,lat) {
       "type": "geojson",
       // "data": "data/convertcsv.geojson",
       // "data": "data/mean_no2.geojson",
-       "data": "https://raw.githubusercontent.com/EyobDejene/no2/master/build/data/mean_no2.geojso",
+       "data": "https://raw.githubusercontent.com/EyobDejene/no2/master/build/data/mean_no2.geojson",
       "maxzoom": 15
     });
 
