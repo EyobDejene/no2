@@ -105,12 +105,12 @@ function loadMap(long,lat) {
   });
 
 
-  map.on('load', function () {
+  map.on('style.load', function () {
     map.addSource('heatmap', {
       "type": "geojson",
       // "data": "data/convertcsv.geojson",
       //"data": "data/mean_no2.geojson",
-       "data": ":http://oege.ie.hva.nl/~westere6/no2/mean_no2.geojson",
+       "data": "http://oege.ie.hva.nl/~westere6/no2/mean_no2.geojson",
       "maxzoom": 15
     });
 
