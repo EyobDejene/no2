@@ -1,15 +1,39 @@
 // import * as d3 from "d3";
 
 export function barchart() {
-  let data = [
-    ["Gemiddelde Amsterdam", 28],
-    ["jou locatie",18],
-    ["Persoonlijke uitstoot", 12]
-  ];
+
 
 
   let chart = document.getElementById("chart");
   if(chart) {
+
+
+
+    let dataSetUserFurnace = JSON.parse(localStorage.getItem('furnace'));
+    let dataSetUserThermostat = JSON.parse(localStorage.getItem('thermostat'));
+    let dataSetUserShower = JSON.parse(localStorage.getItem('shower'));
+    let dataSetUserTravel = JSON.parse(localStorage.getItem('travel'));
+
+    let furnaceValue = dataSetUserFurnace.noxValue;
+    let thermostatValue = dataSetUserThermostat.noxValue;
+    let showerValue = dataSetUserShower.noxValue;
+    let travelValue = 0;
+    for(let item in dataSetUserTravel){
+      travelValue += dataSetUserTravel[item].noxValue;
+    }
+    const totalNox = furnaceValue + thermostatValue + showerValue + travelValue;
+    const roundNox =  Math.round( totalNox * 10 ) / 10;
+    console.log(roundNox );
+
+
+
+    let data = [
+      ["Gemiddelde Amsterdam", 28],
+      ["Jouw locatie",18],
+      ["Persoonlijke uitstoot", roundNox]
+    ];
+
+
     let axisMargin = 20,
       margin = 20,
       valueMargin = 4,
@@ -52,8 +76,8 @@ export function barchart() {
     });
 
     scale = d3.scale.linear()
-    // .domain([0, max])
-      .domain([0, 50])
+    .domain([0, max])
+    //   .domain([0, 100])
       .range([0, width - margin * 2 - labelWidth]);
 
     xAxis = d3.svg.axis()

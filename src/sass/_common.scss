@@ -213,13 +213,15 @@ main .button {
     left: 0;
     width: 20px;
     height: 20px;
-    border: 0.3rem solid rgba(255,255,255,0.8);
+    border: 0.3rem solid rgba(255,255,255,1);
     border-radius: 100%;
+    pointer-events: none;
 }
 
 
 .pagination-container .active {
     background: rgba(255,255,255,1);
+    pointer-events: auto;
 }
 
 

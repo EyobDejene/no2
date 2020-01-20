@@ -1,37 +1,27 @@
-
 export function thermostat(temprature) {
-
-  let noxValue = 0;
-  let unit = '&#xb0;';
- // let valueStored =  JSON.parse(localStorage.getItem('thermostat'));
+  let noxValue = 13.4;
   let tempratureField =  document.querySelector('.temprature');
+  let tempratureSaved =   JSON.parse(localStorage.getItem('thermostat'));
+  if(tempratureField) {
 
-if(tempratureField) {
-  console.log(typeof  temprature)
-  if (typeof temprature !== "undefined") {
-    tempratureField.setAttribute('data-temprature', temprature);
-    tempratureField.innerHTML = temprature + unit;
+    if (typeof temprature === 'undefined') {
+       if(tempratureSaved) {
+         temprature = tempratureSaved.temprature;
+       }else{
+         temprature = tempratureField.getAttribute('data-temprature');
+       }
+    } else {
+      temprature = tempratureField.getAttribute('data-temprature');
+    }
+    console.log(temprature)
+    noxValue = (temprature - 20) * 0.871 + noxValue ;
     let DataoObject = {temprature: temprature, noxValue: noxValue};
     localStorage.setItem('thermostat', JSON.stringify(DataoObject));
-    tempratureField.innerHTML = temprature;
-  } else {
 
-    temprature = 20;
-    // let tempratureField =  document.querySelector('.temprature');
-    tempratureField.setAttribute('data-temprature', temprature);
-    tempratureField.innerHTML = temprature + unit;
-    let DataoObject = {temprature: temprature, noxValue: noxValue};
-    localStorage.setItem('thermostat', JSON.stringify(DataoObject));
   }
 }
-}
-// else {
-//   temprature = 20;
-//   if (tempratureField) {
-//     tempratureField.setAttribute('data-temprature', temprature);
-//     tempratureField.innerHTML = temprature + unit;
-//     let DataoObject = {temprature: temprature, noxValue: noxValue};
-//     localStorage.setItem('thermostat', JSON.stringify(DataoObject));
-//   }
-// }
+
+
+
 export default thermostat();
+
