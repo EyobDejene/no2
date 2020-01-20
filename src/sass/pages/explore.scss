@@ -118,3 +118,32 @@
     pointer-events: auto;
     cursor: pointer;
 }
+
+
+
+@media only screen and (max-width: 900px) {
+   .explore .button {
+        display: none;
+    }
+
+
+    .explore article{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-gap: 0.5rem;
+        grid-auto-rows: auto;
+        grid-template-areas:
+            "info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box info-box"
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            ". . . . . . . . . . . ."
+            "legend legend legend legend legend legend legend legend legend legend legend legend ";
+    }
+}
