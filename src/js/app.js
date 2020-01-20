@@ -109,8 +109,8 @@ function loadMap(long,lat) {
     map.addSource('heatmap', {
       "type": "geojson",
       // "data": "data/convertcsv.geojson",
-      "data": "data/mean_no2.geojson",
-      //  "data": "https://oege.ie.hva.nl/~westere6/no2/mean_no2.geojson",
+      // "data": "data/mean_no2.geojson",
+       "data": "https://raw.githubusercontent.com/EyobDejene/no2/master/build/data/mean_no2.geojso",
       "maxzoom": 15
     });
 
