@@ -6,6 +6,8 @@ import {getGeoCode} from './geocode';
 import {barchart} from './barchart';
 import {furnace} from './furnace';
 import {thermostat} from './thermostat';
+import {shower} from './shower';
+import {travel} from './travel';
 
 
 const queryString = require('query-string');
@@ -107,7 +109,8 @@ function loadMap(long,lat) {
     map.addSource('heatmap', {
       "type": "geojson",
       // "data": "data/convertcsv.geojson",
-      "data": "data/mean_no2.geojson",
+      //"data": "data/mean_no2.geojson",
+       "data": ":http://oege.ie.hva.nl/~westere6/no2/mean_no2.geojson",
       "maxzoom": 15
     });
 
@@ -285,35 +288,35 @@ H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
   checkControls_shower();
   barchart();
   checkForm();
+  checkFurnace();
+  clickInformation();
   furnace();
+  shower();
+  thermostat();
+
 
   let tempStored = JSON.parse(localStorage.getItem('thermostat'));
   if(tempStored) {
     tempStored = tempStored.temprature;
     thermostat(tempStored);
   }
-
-  const buttons = document.querySelectorAll(".radioOptions")
-  for (const button of buttons) {
-    button.addEventListener('click', function () {
-      furnace();
-    })
-  }
-
-
+  travel(true);
+  changeTravelInpute()
 });
 
 checkControls();
 checkControls_shower();
 barchart();
-furnace();
+checkFurnace();
 checkForm();
-
-let tempStored = JSON.parse(localStorage.getItem('thermostat'));
-if(tempStored) {
-  tempStored = tempStored.temprature;
-  thermostat(tempStored);
-}
+clickInformation();
+travel(true);
+changeTravelInpute()
+// let tempStored = JSON.parse(localStorage.getItem('thermostat'));
+// if(tempStored) {
+//   tempStored = tempStored.temprature;
+//   thermostat(tempStored);
+// }
 
 /**
  * Thermostat
@@ -364,7 +367,7 @@ function getvalue(state) {
     }
   }
   tempratureField.innerHTML = temprature + unit;
-  thermostat(temprature)
+  thermostat(temprature);
 }
 
 
@@ -378,7 +381,6 @@ function checkControls_shower() {
       controls[i].addEventListener('click', function () {
         let state = this.classList;
         getvalueTimer(state);
-
       });
     }
   }
@@ -397,6 +399,7 @@ function getvalueTimer(state) {
     }
     minutesFields.innerHTML = minutes;
     document.querySelector('.minutes').setAttribute('data-minutes',minutes);
+    shower(minutes);
   }
   if(state.contains('minutMin')){
     if(minutes > 0){
@@ -404,22 +407,28 @@ function getvalueTimer(state) {
     }
     minutesFields.innerHTML = minutes;
     document.querySelector('.minutes').setAttribute('data-minutes',minutes);
+    shower(minutes);
   }
 }
 
 
-let informationIcon = document.querySelector('.information');
-let pageInformation = document.querySelector('.page-information');
-if(pageInformation) {
-  informationIcon.addEventListener('click', function () {
-    if (pageInformation.classList.contains('active')) {
-      pageInformation.classList.remove('active');
-    } else {
-      pageInformation.classList.add('active');
-    }
 
-  });
+function clickInformation() {
+  let informationIcon = document.querySelectorAll('.information');
+  let countIcons = informationIcon.length -1;
+  let pageInformation = document.querySelectorAll('.page-information');
+  let countpageInformation = pageInformation.length -1;
+  if (pageInformation.length > 0) {
 
+      informationIcon[countIcons].addEventListener('click', function () {
+        console.log(countIcons)
+        if (pageInformation[countpageInformation].classList.contains('active')) {
+          pageInformation[countpageInformation].classList.remove('active');
+        } else {
+          pageInformation[countpageInformation].classList.add('active');
+        }
+      });
+  }
 }
 
 
@@ -428,22 +437,24 @@ if(pageInformation) {
  * furnace
  */
 
-const buttons = document.querySelectorAll(".radioOptions");
-for (const button of buttons) {
-  button.addEventListener('click', function () {
-    furnace();
-  })
+function checkFurnace() {
+  const buttons = document.querySelectorAll(".radioOptions");
+  for (const button of buttons) {
+    button.addEventListener('click', function () {
+      furnace();
+    })
+  }
 }
 
+/**
+ *
+ * travel
+ */
 
-
-
-
-
-
-
-// function initData() {
-//   let DataoObject = {furnace: "", thermostat: "", shower: "", travel: ""};
-//   localStorage.setItem('data', JSON.stringify(DataoObject));
-// }
-// initData()
+function changeTravelInpute() {
+  document.querySelectorAll('.input-number').forEach(field => {
+    field.addEventListener('keyup', function () {
+      travel(false);
+    });
+  });
+}
