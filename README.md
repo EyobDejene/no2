@@ -4,7 +4,7 @@
 <a href="https://gyazo.com/3a35c5678c4cca120bc698457726c041"><img src="https://i.gyazo.com/3a35c5678c4cca120bc698457726c041.gif" alt="Image from Gyazo" width="1000"/></a>
 
 
-<a href="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png"><img src="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png" alt="knmi" width="40"/></a>
+<a href="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png"><img src="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png" alt="knmi" width="200"/></a>
 
 
 
@@ -27,7 +27,7 @@ To measure your personal footprint, a number of questions are asked that map you
 * Barchart visualization based on results of user input 
 * Smooth page transitions
 
-
+> Most of the features are separated into different modules and are stored in the directory src/js
 
 
 ## Data usage 
@@ -105,3 +105,9 @@ You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
 * `npm run lint` - linting javascript with **eslint**.
 * `npm run lint-fix` - fix as many issues as possible relatives to **eslint** settings.
 
+
+
+## Acknowledgements/credits
+*  Convert netCDF dataset to json and calculate averages  [Bas Mijling](https://www.knmi.nl/over-het-knmi/onze-mensen/bas-mijling)
+*  HighWay page transition  [DevEd](https://www.youtube.com/watch?v=1dJT-99KpiI)
+*  Gsap tranisitons [Yuri Artyukh](https://www.youtube.com/watch?v=pFpqA2xCFQY)
