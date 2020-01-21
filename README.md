@@ -1,12 +1,12 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/81b5fc19-cc48-4f80-8e96-629f4f6b306d/deploy-status)](https://app.netlify.com/sites/no2-footprint/deploys)
 
-#No2 footprint
+# No2 footprint
 
 
 
 
 
-#How to use
+# How to use
 
 Clone this repo and then in command line type:
 
