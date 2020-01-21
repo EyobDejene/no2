@@ -2,9 +2,7 @@
 
 # No2 footprint
 
-[![Image from Gyazo](https://i.gyazo.com/15162bbcd34ec89556c0e8ec32611e8a.gif)](https://gyazo.com/15162bbcd34ec89556c0e8ec32611e8a)
-
-
+<a href="https://gyazo.com/15162bbcd34ec89556c0e8ec32611e8a"><img src="https://i.gyazo.com/15162bbcd34ec89556c0e8ec32611e8a.gif" alt="Image from Gyazo" width="1000"/></a>
 
 ## How to use
 
