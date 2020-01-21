@@ -8,7 +8,7 @@ import {furnace} from './furnace';
 import {thermostat} from './thermostat';
 import {shower} from './shower';
 import {travel} from './travel';
-
+import {TimelineMax} from 'gsap';
 
 const queryString = require('query-string');
 
@@ -17,6 +17,21 @@ const H = new Highway.Core({
     default: Fade
   }
 });
+
+
+if(document.querySelector('.home')){
+  let tl = new TimelineMax();
+  let pageColor = document.querySelector('._1');
+  let pageColor2 = document.querySelector('._2');
+  let pageColor3 = document.querySelector('._3');
+  tl.fromTo(pageColor, 1, {left: '0%'}, {left: '-100%', delay: .5})
+    .fromTo(pageColor2, 0.5, {top: '0%'}, {top: '-100%'})
+    .fromTo(pageColor3, 0.5, {right: '0%'}, {right: '-100%', onComplete: complete});
+
+  function complete() {
+    window.location.href = '/introduction';
+  }
+}
 
 
 
