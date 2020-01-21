@@ -1,9 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/81b5fc19-cc48-4f80-8e96-629f4f6b306d/deploy-status)](https://app.netlify.com/sites/no2-footprint/deploys)
 
 # No2 footprint
-
-
-![DEMO](https://i.gyazo.com/15162bbcd34ec89556c0e8ec32611e8a.gif)
+<a href="https://gyazo.com/3a35c5678c4cca120bc698457726c041"><img src="https://i.gyazo.com/3a35c5678c4cca120bc698457726c041.gif" alt="Image from Gyazo" width="1000"/></a>
 
 ## How to ue
 
