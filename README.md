@@ -3,6 +3,12 @@
 # No2 footprint
 <a href="https://gyazo.com/3a35c5678c4cca120bc698457726c041"><img src="https://i.gyazo.com/3a35c5678c4cca120bc698457726c041.gif" alt="Image from Gyazo" width="1000"/></a>
 
+
+<a href="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png"><img src="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png" alt="knmi" width="70px"/></a>
+
+
+
+
 ##  Live demo 
 
 [Check out the demo](https://no2-footprint.netlify.com)
@@ -19,10 +25,13 @@ To measure your personal footprint, a number of questions are asked that map you
 * Set marker on map based on user location input
 * Save user input data in localstorage
 * Barchart visualization based on results of user input 
+* Smooth page transitions
+
+
 
 
 ## Data usage 
-Data used within the application are based on measurements from the [GGD]('www.luchtmeetnet.nl') measurement network Amsterdam in collaboration with Royal Dutch Meteorological Institute [KNMI]('https://www.knmi.nl/home').
+Data used within the application are based on measurements from the [GGD](www.luchtmeetnet.nl) measurement network Amsterdam in collaboration with Royal Dutch Meteorological Institute [KNMI](https://www.knmi.nl/home).
 The No2 concentrations are given according to a "road-following" grid. Near the streets, where you
 expect greater fluctuations in concentration, there are more measurement points. 
 
@@ -39,6 +48,14 @@ You will need the following things properly installed on your computer.
 * [Node.js](https://nodejs.org/) (with npm)
 * [Google Chrome](https://google.com/chrome/)
  
+ 
+## Main dependencies
+
+* [Highway](http://highway.js.org/)
+* [D3](https://d3js.org/)
+* [Gsap](https://greensock.com/gsap/)
+* [Mapbox-gl](https://docs.mapbox.com/mapbox-gl-js/api/)
+
 
 ## How to use
 
