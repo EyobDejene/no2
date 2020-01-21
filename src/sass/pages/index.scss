@@ -1,7 +1,29 @@
 
 .home{
-  background: $blank;
+  background: #7ebfd9;
 }
+
+.cbgolor{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+._1 {
+    background-color: #ffffff;
+    z-index: -4;
+
+}
+._2{
+    background-color: #c03636;
+    z-index: -5;
+}
+
+._3{
+    background-color: #fcca4c;
+    z-index: -6;
+}
+
 
 .home article{
   display: grid;
@@ -9,12 +31,18 @@
   grid-gap: 0.5rem;
   grid-auto-rows: auto;
   grid-template-areas:
+          "info-box info-box info-box info-box info-box info-box . . . . . ."
           ". . . . . logo-amsterdam logo-amsterdam . . . . ."
 		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
 		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
 		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
 		  ". . . . . logo-amsterdam logo-amsterdam . . . . ."
 		  ". . . . . . . . . logo-knmi logo-knmi logo-knmi";
+}
+
+.home .information-box{
+    grid-area: info-box;
+    color: $boxText;
 }
 
 .logo-knmi{
