@@ -14,7 +14,12 @@ export function thermostat(temprature) {
       temprature = tempratureField.getAttribute('data-temprature');
     }
     console.log(temprature)
-    noxValue = (temprature - 20) * 0.871 + noxValue ;
+    if(temprature < 5) {
+      noxValue =  temprature / noxValue * 0.871;
+    }else{
+      noxValue = (temprature - 20) * 0.871 + noxValue;
+    }
+
     let DataoObject = {temprature: temprature, noxValue: noxValue};
     localStorage.setItem('thermostat', JSON.stringify(DataoObject));
 

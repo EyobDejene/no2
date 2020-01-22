@@ -10,34 +10,52 @@ import {shower} from './shower';
 import {travel} from './travel';
 import {TimelineMax} from 'gsap';
 
+
 const queryString = require('query-string');
 
 let H = new Highway.Core({
   transitions: {
     default: Fade,
     contextual: {
-      slide: Slide
+      slide: Fade
     },
 
   }
 });
 
 
-if(document.querySelector('.home')){
-  let tl = new TimelineMax();
-  let pageColor = document.querySelector('._1');
-  let pageColor2 = document.querySelector('._2');
-  let pageColor3 = document.querySelector('._3');
-  tl.fromTo(pageColor, 1, {left: '0%'}, {left: '-100%', delay: .5})
-    .fromTo(pageColor2, 0.5, {top: '0%'}, {top: '-100%'})
-    .fromTo(pageColor3, 0.5, {right: '0%'}, {right: '-100%', onComplete: complete});
+// need to clean up and stuffff
 
-  function complete() {
-    console.log(H.Transitions.default)
-    H.redirect('introduction');
-    //window.location.href = '/introduction';
+function firstLoader() {
+
+  if (document.querySelector('.home')) {
+    let tl = new TimelineMax();
+    let tl2 = new TimelineMax();
+    let pageColor = document.querySelector('._1');
+    let pageColor2 = document.querySelector('._2');
+    let pageColor3 = document.querySelector('._3');
+    let tag = document.querySelector('#tag');
+    tl.fromTo(pageColor, 1, {left: '0%'}, {left: '-100%', delay: .4})
+      .fromTo(pageColor2, 0.5, {top: '0%'}, {top: '-100%'})
+      .fromTo(pageColor3, 0.5, {right: '0%'}, {right: '-100%', onComplete: complete});
+
+    tl2.fromTo(tag, 5, {marginTop: '100%'}, {marginTop: '-100%', delay: .4});
+
+    function complete() {
+      // console.log(H.Transitions.default);
+      setTimeout(function () {
+        document.querySelector('.triggerIntropage').click();
+      }, 1000)
+
+    }
+
+    //remove all storage
+    removeLocalstorage();
+
   }
+
 }
+
 
 
 
@@ -277,16 +295,18 @@ function loadMap(long,lat) {
        let nox = Math.floor(displayFeatures[1].properties.conc_ana)
 
        noxValueBox.innerHTML = nox + " &micro;g/&#x33a5";
+       let DataoObject = {noxValue: nox};
+       localStorage.setItem('nox', JSON.stringify(DataoObject));
        streetnameBox.innerHTML = streetName;
        housenumberBox.innerHTML = houseNumber;
 
        new mapboxgl.Popup()
          .setLngLat([long, lat])
-         // .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
-         .setHTML(`<h3>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</h3>`)
+         .setHTML(`<p>${nox} &micro;g/&#x33a5;</p>`)
          .addTo(map);
      }
      // console.log(Math.floor(displayFeatures[0].properties.conc_ana));
+     // .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
    }
 
 
@@ -313,7 +333,7 @@ function loadMap(long,lat) {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
         // .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
-        .setHTML(`<h3>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</h3>`)
+        .setHTML(`<p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
         .addTo(map);
     });
 
@@ -338,6 +358,58 @@ function loadMap(long,lat) {
  * when load page
  */
 H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
+
+  let tl = new TimelineMax();
+  let loader = document.querySelector('.loader');
+  tl.to(loader, .4, {opacity: '1'});
+  tl.to(loader, .4, {opacity: '0'});
+
+
+  console.log(location.pathname);
+  if(location.pathname === '/location.html'){
+    let board = document.querySelector('.logo-amststerdam-board');
+    tl.fromTo(board, 1, {bottom: '-100%'},{bottom:'-15%' , duration: 2.5, ease: "elastic.out(1, 0.3)"});
+  }
+
+  if(location.pathname === '/furnace.html'){
+    let imag1 = document.querySelector('.an1');
+    let imag2 = document.querySelector('.an2');
+    let imag3 = document.querySelector('.an3');
+    tl.fromTo(imag1, .5, {scaleX:0, scaleY:0},{scaleX:1, scaleY:1 , ease: "elastic.out(.4, 0.3)"});
+    tl.fromTo(imag2, .5, {scaleX:0, scaleY:0},{scaleX:1, scaleY:1, ease: "elastic.out(.4, 0.3)"});
+    tl.fromTo(imag3, .5, {scaleX:0, scaleY:0},{scaleX:1, scaleY:1 , ease: "elastic.out(.4, 0.3)"});
+  }
+  if(location.pathname === '/thermostat.html'){
+    let circle = document.querySelector('.thermostat_icon');
+    tl.fromTo(circle, .5, {scaleX:0, scaleY:0,rotation:-180},{scaleX:1, scaleY:1 ,rotation:0, ease: "elastic.out(.4, 0.3)"}).delay(2);
+  }
+
+  if(location.pathname === '/shower.html'){
+    let shower = document.querySelector('.showerBase');
+    let circle = document.querySelector('.timer');
+    tl.fromTo(shower, 1, {left: '-40%'},{left:'10%' , duration: 2.5, ease: "power4.out"});
+    tl.fromTo(circle, .5, {scaleX:0, scaleY:0,rotation:-90},{scaleX:1, scaleY:1 ,rotation:0, ease: "elastic.out(.4, 0.3)"}).delay(.5);
+  }
+
+  if(location.pathname === '/travel.html'){
+    let button = document.querySelector('.button');
+    tl.fromTo(button, 1, {left: '-100%' },{left: 'auto', ease: "elastic.out(.4, 0.3)"}).delay(.5);
+  }
+
+  if(location.pathname === '/advise.html'){
+    let car = document.querySelector('.car');
+    let shower = document.querySelector('.shower');
+    let thermostat = document.querySelector('.thermos');
+    tl.fromTo(car, 1, {opacity: 0, left: '-100%' },{opacity: 1, left: '0%', ease: "elastic.out(.4, 0.3)"}).delay(.5);
+    tl.fromTo(shower, 1, {opacity: 0, left: '-100%' },{opacity: 1, left: '0%', ease: "elastic.out(.4, 0.3)"}).delay(.5);
+    tl.fromTo(thermostat, 1, {opacity: 0, left: '-100%' },{opacity: 1, left: '0%', ease: "elastic.out(.4, 0.3)"}).delay(.5);
+  }
+
+
+
+
+
+  firstLoader();
   checkControls();
   checkControls_shower();
   barchart();
@@ -358,6 +430,9 @@ H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
   changeTravelInpute()
 });
 
+
+
+firstLoader();
 checkControls();
 checkControls_shower();
 barchart();
@@ -511,4 +586,17 @@ function changeTravelInpute() {
       travel(false);
     });
   });
+}
+
+
+
+
+
+function removeLocalstorage(){
+  localStorage.removeItem('travel');
+  localStorage.removeItem('thermostat');
+  localStorage.removeItem('shower');
+  localStorage.removeItem('furnace');
+  localStorage.removeItem('location');
+  localStorage.removeItem('nox');
 }

@@ -14,13 +14,7 @@ class Fade extends Highway.Transition {
     from.remove();
 
     // Animation
-    Tween.fromTo(to, 0.5,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        onComplete: done
-      }
-    );
+    Tween.fromTo(to, .6, { opacity: 0}, { delay:.8, opacity: 1, onComplete: done});
   }
 
   out({ from, done }) {
