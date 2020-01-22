@@ -10,8 +10,8 @@ title: Index page
         <section class="grid-location">
             <article>
               <div class="information-box">
-                <h1>Hoeveel stikstof is in jouw buurt?</h1>
-                <p>Vul hier jouw adres in en krijg inzicht over de No2 uitstoot in jouw buurt.</p>
+                <h1>Hoeveel stikstof wordt er in jouw buurt uitgestoten?</h1>
+                <p>Voer je adres in en krijg inzicht over de No2 uitstoot in de buurt.</p>
               </div>
 
 
@@ -19,11 +19,11 @@ title: Index page
                 <div class="information">
                 </div>
                 <h1>Informatie</h1>
-                <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een
-                  huishouden</p>
+                <p>Op dit moment is er alleen data beschikbaar over Amsterdam. Andere locaties worden nog niet ondersteund.
+                </p>
               </div>
 
-              <form id="location" method="get" action="explore.html" class="fields">
+              <form id="location" method="get" action="explore.html" class="fields" data-transition="slide">
                   <div class="group livingplace">
                     <label for="place">Straatnaam</label>
                     <input id="place" type="text" placeholder="straatnaam" value="" name="place" class="place">
@@ -40,7 +40,12 @@ title: Index page
               <div class="messageBox">
                 <p class="message"></p>
               </div>
-              <input form="location" id="submit" class="button" type="submit" value="volgende" />
+
+              <div class="amsterdam-board">
+                <img src="./img/board-amsterdam.svg" class="logo-amststerdam-board" alt="board-amsterdam"/>
+              </div>
+
+              <input form="location" id="submit" class="button" type="submit" value="volgende" data-transition="slide" />
               <!--<button id="submit" class="button">volgende</button>-->
             </article>
         </section>

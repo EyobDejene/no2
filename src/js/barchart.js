@@ -25,7 +25,10 @@ export function barchart() {
     const roundNox =  Math.round( totalNox * 10 ) / 10;
     console.log(roundNox );
 
-
+    let field = document.querySelector('.resultValue');
+    let unitGram  = " gram";
+    let unitMicro  = " ug/m3";
+    field.innerHTML = roundNox + unitGram;
 
     let data = [
       ["Gemiddelde Amsterdam", 28],
@@ -105,7 +108,12 @@ export function barchart() {
       .attr("dy", ".35em") //vertical align middle
       .attr("text-anchor", "end")
       .text(function (d) {
-        return d[1] + 'ug/m3';
+        if(d[0] === "Persoonlijke uitstoot"){
+          return d[1] + unitGram;
+        }else{
+          return d[1] + unitMicro;
+        }
+
       })
       .attr("x", 0)
       .transition()
