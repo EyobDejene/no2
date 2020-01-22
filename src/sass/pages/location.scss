@@ -34,6 +34,24 @@
     color: $boxText;
 }
 
+.location .amsterdam-board{
+    //grid-area: board;
+}
+
+.location .amsterdam-board .logo-amststerdam-board{
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    width: 25rem;
+    max-height: 100%;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 2rem;
+    bottom: -15%;
+}
+
 .location .button{
     background-color: $nextButtonYellow;
 }

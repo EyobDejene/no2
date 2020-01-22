@@ -20,7 +20,7 @@
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
-        ". . . . . button button . . . . .";
+        ". . . . . button button buttonResults buttonResults . . .";
 
 }
 
@@ -40,8 +40,13 @@
 
 }
 
-.results .button{
+.results .adviseButton{
     grid-area: button;
+    color: $boxText;
+}
+
+.results .buttonResults{
+    grid-area: buttonesults!important;
     color: $boxText;
 }
 
@@ -50,6 +55,14 @@
 }
 
 .results .button:hover{
+    background-color: $nextButtonYellowHover;
+}
+
+.results .buttonResults{
+    background-color: $coolBlue;
+}
+
+.results .buttonResults:hover{
     background-color: $nextButtonYellowHover;
 }
 

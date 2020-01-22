@@ -1,7 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import Highway from '@dogstudio/highway';
 import Fade from './fade';
-// import Slide from './slide';
+import Slide from './slide';
 import {getGeoCode} from './geocode';
 import {barchart} from './barchart';
 import {furnace} from './furnace';
@@ -12,9 +12,13 @@ import {TimelineMax} from 'gsap';
 
 const queryString = require('query-string');
 
-const H = new Highway.Core({
+let H = new Highway.Core({
   transitions: {
-    default: Fade
+    default: Fade,
+    contextual: {
+      slide: Slide
+    },
+
   }
 });
 
@@ -29,7 +33,9 @@ if(document.querySelector('.home')){
     .fromTo(pageColor3, 0.5, {right: '0%'}, {right: '-100%', onComplete: complete});
 
   function complete() {
-    window.location.href = '/introduction';
+    console.log(H.Transitions.default)
+    H.redirect('introduction');
+    //window.location.href = '/introduction';
   }
 }
 
@@ -58,7 +64,7 @@ function checkForm() {
           .then(data => {
             // console.log(data)
             if (data == false) {
-              let message = "Geen data gevonden voor deze locatie.";
+              let message = "Op dit moment is alleen data beschikbaar van locaties in Amsterdam.";
               let boxMessage = document.querySelector('.message');
               boxMessage.innerHTML = message;
             } else {
@@ -111,10 +117,11 @@ function loadMap(long,lat) {
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/eyobwesterink/ck4cup6am3dwk1co42q9wwmxo',
+    // style: 'mapbox://styles/eyobwesterink/ck5nrqgad13qx1imm5e9exlqn',
     center: [long, lat],
-    zoom: 14,
-    minZoom: 14,
-    maxZoom: 15,
+    zoom: 13,
+    minZoom: 13,
+    maxZoom: 14,
     maxBounds: bounds // Sets bounds as max
 
   });
@@ -142,16 +149,16 @@ function loadMap(long,lat) {
             'interpolate',
             ['linear'],
             ['zoom'],
-            7,
+            1,
             ['interpolate', ['linear'], ['get', 'conc_ana'], 1, 100, 190, 90],
             15,
-            ['interpolate', ['linear'], ['get', 'conc_ana'], 100, 100, 190, 20],
+            ['interpolate', ['linear'], ['get', 'conc_ana'], 100, 50, 190, 20],
           ],
 // Color circle by earthquake magnitude
           'circle-color': [
 
             'interpolate',
-            ['cubic-bezier', 0, 0.5, 1, 0.5],
+            ['cubic-bezier', 0, 0.5, 1, 0.9],
             ['get', 'conc_ana'],
             // 0,  'rgba(48, 96, 207, 0.2)',
             // 10,  'rgba(48, 96, 207, 0.5)',
@@ -167,25 +174,71 @@ function loadMap(long,lat) {
             // 40,  'rgba(176, 29, 27, 0.5)',
 
 
-            0,  'rgba(255, 255, 204,0.5)',
-            10, 'rgba(255, 255, 204,0.5)',
-            12, 'rgba(255, 241, 169,0.5)',
-            14, 'rgba(254, 224, 135,0.5)',
-            16, 'rgba(254, 201, 102,0.5)',
-            18, 'rgba(254, 171, 75,0.5)',
-            20, 'rgba(253, 137, 60,0.5)',
-            25, 'rgba(250, 92, 46,0.5)',
-            30, 'rgba(236, 48, 35,0.5)',
-            35, 'rgba(211, 17, 33,0.5)',
-            39, 'rgba(175, 2, 37,0.5)',
-            40, 'rgba(175, 2, 37,0.5)',
+            // 0,  'rgba(255, 255, 204,0.5)',
+            // 10, 'rgba(255, 255, 204,0.5)',
+            // 12, 'rgba(255, 241, 169,0.5)',
+            // 14, 'rgba(254, 224, 135,0.5)',
+            // 16, 'rgba(254, 201, 102,0.5)',
+            // 18, 'rgba(254, 171, 75,0.5)',
+            // 20, 'rgba(253, 137, 60,0.5)',
+            // 25, 'rgba(250, 92, 46,0.5)',
+            // 30, 'rgba(236, 48, 35,0.5)',
+            // 35, 'rgba(211, 17, 33,0.5)',
+            // 39, 'rgba(175, 2, 37,0.5)',
+            // 40, 'rgba(175, 2, 37,0.5)',
+
+            0,  'rgb(75,145,86)',
+            10, 'rgb(75,145,86)',
+            12, 'rgb(75,145,86)',
+            14, 'rgb(75,145,86)',
+            16, 'rgb(75,145,86)',
+            17, 'rgb(75,145,86)',
+
+
+            18, 'rgb(252,202,76)',
+            19, 'rgb(252,202,76)',
+            20, 'rgb(252,202,76)',
+            21, 'rgb(252,202,76)',
+
+            22, 'rgb(252,202,76)',
+            23, 'rgb(252,202,76)',
+            24, 'rgb(252,202,76)',
+
+
+
+            25, 'rgb(215,110,62)',
+            26, 'rgb(215,110,62)',
+            27, 'rgb(215,110,62)',
+            28, 'rgb(215,110,62)',
+            29, 'rgb(215,110,62)',
+
+            30, 'rgb(192,54,54)',
+            31, 'rgb(192,54,54)',
+            32, 'rgb(192,54,54)',
+            33, 'rgb(192,54,54)',
+            34, 'rgb(192,54,54)',
+            35, 'rgb(192,54,54)',
+
+            40, 'rgb(108,1,0)',
+            41, 'rgb(108,1,0)',
+            42, 'rgb(108,1,0)',
+            43, 'rgb(108,1,0)',
+            44, 'rgb(108,1,0)',
+            45, 'rgb(108,1,0)',
+            100, 'rgb(108,1,0)',
+
+
+
+
           ],
-          'circle-blur': 4,
-          'circle-opacity': 0.9
+          'circle-blur': 2,
+          'circle-opacity': 0.2
         }
       },
       'waterway-label'
     );
+
+
 
 
     // fire marker when everything is loaded
@@ -223,33 +276,18 @@ function loadMap(long,lat) {
        let housenumberBox = document.querySelector('.houseNumber');
        let nox = Math.floor(displayFeatures[1].properties.conc_ana)
 
-       noxValueBox.innerHTML = nox + "&micro;g/&#x33a5";
+       noxValueBox.innerHTML = nox + " &micro;g/&#x33a5";
        streetnameBox.innerHTML = streetName;
        housenumberBox.innerHTML = houseNumber;
 
        new mapboxgl.Popup()
          .setLngLat([long, lat])
-         .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
+         // .setHTML(`<h3>No2 waarde</h3><p>${ nox } &micro;g/&#x33a5;</p>`)
+         .setHTML(`<h3>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</h3>`)
          .addTo(map);
      }
      // console.log(Math.floor(displayFeatures[0].properties.conc_ana));
    }
-
-
-    document.querySelector('.ownLocation').addEventListener('click',function () {
-  console.log('fly');
-      map.flyTo({
-        center: [long,lat],
-        zoom: 10,
-        bearing: 0,
-        speed: 0.2, // make the flying slow
-        curve: 1, // change the speed at which it zooms out
-        easing: function(t) {
-          return t;
-        },
-        essential: true
-      });
-    });
 
 
 
@@ -274,7 +312,8 @@ function loadMap(long,lat) {
     map.on('click', 'heatmap', function (e) {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
-        .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
+        // .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
+        .setHTML(`<h3>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</h3>`)
         .addTo(map);
     });
 

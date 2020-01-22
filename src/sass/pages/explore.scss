@@ -60,7 +60,7 @@
 }
 
 .explore .marker {
-    background-image: url('../img/mapbox-icon-amsterdam.png');
+    background-image: url('../img/mapbox-icon.png');
     background-size: cover;
     width: 50px;
     height: 50px;
@@ -93,6 +93,13 @@
 
 }
 
+.explore .session span{
+    font-family: paragraph;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    display: block;
+}
+
 .explore .row {
     height: 12px;
     width: 100%;
@@ -104,7 +111,7 @@
 
 
 .explore .colors {
-    background: linear-gradient(to right, #f3ba0c, #cc090d, #091137);
+    background: linear-gradient(90deg,#127006 6%,#287734 16%,#fcca4c 33%,#fcca4c 38%,#c03636 64%,#6c0100 89%);
     margin-bottom: 5px;
 }
 
@@ -116,7 +123,6 @@
 
 .ownLocation{
     pointer-events: auto;
-    cursor: pointer;
 }
 
 
