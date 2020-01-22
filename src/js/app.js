@@ -290,9 +290,10 @@ function loadMap(long,lat) {
 
      let noxValueBox = document.querySelector('.nox-value');
      if(noxValueBox) {
-       let streetnameBox = document.querySelector('.streetName')
+       let streetnameBox = document.querySelector('.streetName');
        let housenumberBox = document.querySelector('.houseNumber');
-       let nox = Math.floor(displayFeatures[1].properties.conc_ana)
+       // let nox = Math.floor(displayFeatures[1].properties.conc_ana);
+       let nox = Math.round( displayFeatures[1].properties.conc_ana * 10 ) / 10;
 
        noxValueBox.innerHTML = nox + " &micro;g/&#x33a5";
        let DataoObject = {noxValue: nox};
@@ -333,7 +334,8 @@ function loadMap(long,lat) {
       new mapboxgl.Popup()
         .setLngLat(e.lngLat)
         // .setHTML(`<h3>No2 waarde</h3><p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
-        .setHTML(`<p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
+        // .setHTML(`<p>${ Math.floor(e.features[0].properties.conc_ana) } &micro;g/&#x33a5;</p>`)
+        .setHTML(`<p>${ Math.round(e.features[0].properties.conc_ana * 10 ) / 10 } &micro;g/&#x33a5;</p>`)
         .addTo(map);
     });
 

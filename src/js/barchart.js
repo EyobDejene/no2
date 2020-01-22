@@ -132,7 +132,7 @@ export function barchart() {
     bar.append("text")
       .attr("class", "value")
       .attr("y", barHeight / 2)
-      .attr("dx", -valueMargin + labelWidth + 70) //margin right
+      .attr("dx", -valueMargin + labelWidth + 80) //margin right
       .attr("dy", ".35em") //vertical align middle
       .attr("text-anchor", "end")
       .text(function (d) {
