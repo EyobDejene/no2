@@ -52,7 +52,7 @@ export function barchart() {
 
 
     let data = [
-      ["Gemiddelde Amsterdam", 28],
+      ["Gemiddelde Amsterdam", 21.4],
       ["Jouw locatie",noxYourLocation.noxValue],
       ["Persoonlijke uitstoot", roundNox]
     ];
