@@ -2,7 +2,7 @@
 
 # No2 footprint
 
-<a href="https://gyazo.com/cfee7d041d6f9188b1c221c8ed895d63"><img src="https://i.gyazo.com/cfee7d041d6f9188b1c221c8ed895d63.gif" alt="Image from Gyazo" width="1000"/></a>
+<a href="https://gyazo.com/cfee7d041d6f9188b1c221c8ed895d63"><img src="https://i.gyazo.com/26180bbaba019d3d9124d80609f1fa4d.gif" alt="Image from Gyazo" width="1000"/></a>
 ##  Live demo 
 
 [Check out the demo](https://no2-footprint.netlify.com)
