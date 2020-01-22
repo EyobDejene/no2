@@ -1,11 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/81b5fc19-cc48-4f80-8e96-629f4f6b306d/deploy-status)](https://app.netlify.com/sites/no2-footprint/deploys)
 
 # No2 footprint
-<a href="https://gyazo.com/3a35c5678c4cca120bc698457726c041"><img src="https://i.gyazo.com/3a35c5678c4cca120bc698457726c041.gif" alt="Image from Gyazo" width="1000"/></a>
-
-
-<a href="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png"><img src="https://cdn.knmi.nl/assets/logo_large-a9be0e49aed0aa1f72a7da54d348d14ce94d070e7950f67dbc85039f0574ca48.png" alt="knmi" width="200"/></a>
-
+<a href="https://gyazo.com/a8b31d236d707c6bb33f99ae32d511b0"><img src="https://i.gyazo.com/a8b31d236d707c6bb33f99ae32d511b0.gif" alt="Image from Gyazo" width="1000"/></a>
 
 
 
@@ -111,3 +107,4 @@ You can also use [npm scripts](https://docs.npmjs.com/misc/scripts):
 *  Convert netCDF dataset to json and calculate averages  [Bas Mijling](https://www.knmi.nl/over-het-knmi/onze-mensen/bas-mijling)
 *  HighWay page transition  [DevEd](https://www.youtube.com/watch?v=1dJT-99KpiI)
 *  Gsap tranisitons [Yuri Artyukh](https://www.youtube.com/watch?v=pFpqA2xCFQY)
+*  User interface design  Nouel de Cneudt and Frank de Bruin

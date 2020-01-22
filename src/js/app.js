@@ -600,3 +600,12 @@ function removeLocalstorage(){
   localStorage.removeItem('location');
   localStorage.removeItem('nox');
 }
+
+
+let timeout;
+document.onmousemove = function(){
+  clearTimeout(timeout);
+  timeout = setTimeout(function(){
+    window.location.replace("/");
+    }, 120000);
+}
