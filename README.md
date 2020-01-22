@@ -2,7 +2,7 @@
 
 # No2 footprint
 
-<img src="https://oege.ie.hva.nl/~westere6/no2/a8b31d236d707c6bb33f99ae32d511b0.gif" alt="Image from Gyazo" width="1000"/>
+<a href="https://gyazo.com/3a35c5678c4cca120bc698457726c041"><img src="https://i.gyazo.com/3a35c5678c4cca120bc698457726c041.gif" alt="Image from Gyazo" width="1000"/></a>
 
 ##  Live demo 
 
