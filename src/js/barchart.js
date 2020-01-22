@@ -2,6 +2,7 @@
 
 export function barchart() {
 
+  // need to clean up and tuffff
 
 
   let chart = document.getElementById("chart");

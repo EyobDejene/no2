@@ -1,4 +1,5 @@
 
+// need to clean up and tuffff
 export function furnace() {
     let noxValue = 0;
     let ele = document.getElementsByName('type_furnace');
