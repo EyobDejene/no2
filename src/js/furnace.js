@@ -1,5 +1,5 @@
 
-// need to clean up and tuffff
+// need to clean up and stuffff
 export function furnace() {
     let noxValue = 0;
     let ele = document.getElementsByName('type_furnace');

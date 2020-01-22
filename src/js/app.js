@@ -24,7 +24,7 @@ let H = new Highway.Core({
 });
 
 
-// need to clean up and tuffff
+// need to clean up and stuffff
 
 function firstLoader() {
 
