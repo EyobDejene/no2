@@ -26,13 +26,33 @@ export function barchart() {
     console.log(roundNox );
 
     let field = document.querySelector('.resultValue');
+    let fieldAv = document.querySelector('.advise_text');
     let unitGram  = " gram";
     let unitMicro  = " ug/m3";
+
+    let noxYourLocation = JSON.parse(localStorage.getItem('nox'));
+
     field.innerHTML = roundNox + unitGram;
+
+    if(roundNox > 10 && roundNox < 50){
+      fieldAv.innerHTML = "ligt boven het gemiddelde";
+    }else if(roundNox > 5 && roundNox < 10){
+      fieldAv.innerHTML = "is gemiddeld";
+    }else if(roundNox > 5 && roundNox < 6){
+      fieldAv.innerHTML = "ligt onder het gemiddelde";
+    }
+    else if(roundNox < 5){
+      fieldAv.innerHTML = "ligt ver onder het gemiddelde";
+    }
+    else if(roundNox > 50){
+      fieldAv.innerHTML = "ligt ver boven het gemiddelde";
+    }
+
+
 
     let data = [
       ["Gemiddelde Amsterdam", 28],
-      ["Jouw locatie",18],
+      ["Jouw locatie",noxYourLocation.noxValue],
       ["Persoonlijke uitstoot", roundNox]
     ];
 
@@ -92,6 +112,13 @@ export function barchart() {
       .attr("transform", "translate(" + labelWidth + ", 0)")
       .attr("height", barHeight)
       .attr("width", 0)
+      .style("opacity",function(d){
+        if(d[0] === "Persoonlijke uitstoot"){
+          return  1.0;
+        }else{
+          return .3;
+        }
+      })
       .transition()
       .duration(2000)//time in ms
       .delay(function (d, i) {

@@ -12,7 +12,7 @@
         "info-box info-box info-box info-box info-box info-box info-box . . . . ."
 
         "wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap"
-        ". . . . . . . . . . button button";
+        ". . . .  button button restart restart . . . .";
 
 }
 
@@ -37,6 +37,18 @@
 
 .advise .button:hover{
     background-color: $nextButtonYellowHover;
+}
+
+.advise .restart{
+    grid-area: restart;
+    background-color: $amsterdamRed;
+    color: $boxText;
+    animation: none;
+}
+
+
+.advise .restart:hover{
+    background-color: #A42F2F;
 }
 
 

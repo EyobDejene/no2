@@ -11,6 +11,11 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
   </head>
   <body>
+    <div class="loader">
+      <div class="loader_frame">
+        <img src="./img/animation_cloud.gif" />
+      </div>
+    </div>
     <!-- BEGIN content -->
     <div class="out">
       <div data-router-wrapper>
@@ -20,78 +25,80 @@
               <article>
                 <span class="pageNumber">4</span>
                 <div class="information-box">
-                  <h1>Hoeveel km reis jij per week met onderstaande vervoersmiddelen?</h1>
+                  <h1>Hoeveel kilometer reis jij per week met de onderstaande vervoersmiddelen?</h1>
                   <p>Voer het aantal kilometers per voertuig in.</p>
                 </div>
                 <div class="page-information">
                   <div class="information">
                   </div>
                   <h1>Informatie</h1>
-                  <p>De uitstoot van een kookplaat wordt berekendt doormiddel van gemiddelde uitstoot van een huishouden.</p>
+                  <p> Alle op elektriciteit rijdende voertuigen worden voorzien door groene stroom binnen Amsterdam. Dit geldt alleen wanneer dat de elektrische voertuigen binnen Amsterdam zijn opgeladen.<br><br> Bij het winnen van groene stroom komt er geen stikstofdioxide vrij doordat er geen verbranding plaatsvindt.<br><br>
+                    <i>Alle uitstoot is gebaseerd op gemiddeldes.</i>
+                  </p>
                 </div>
                 <!--<button id="submit" class="button">volgende</button>-->
                 <div class="wrap">
                   <div class="verhical bus">
                     <div class="amount">
-                      <input class="input-number" placeholder="0 km" type="number" value="0" min="0" onkeydown="return event.keyCode!== 69" name="bus">
+                      <input class="input-number" placeholder="0 km" type="number" value="" min="0" onkeydown="return event.keyCode!== 69" name="bus">
                     </div>
                     <div class="icon"><img src="./img/bus.svg"></div>
                   </div>
                   <div class="verhical tram">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="tram">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="tram">
                     </div>
                     <div class="icon"><img src="./img/tram.svg"></div>
                   </div>
                   <div class="verhical train">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="train">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="train">
                     </div>
                     <div class="icon"><img src="./img/train.svg"></div>
                   </div>
                   <div class="verhical metro">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="metro">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="metro">
                     </div>
                     <div class="icon"><img src="./img/metro.svg"></div>
                   </div>
                   <div class="verhical car">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="car">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="car">
                     </div>
                     <div class="icon"><img src="./img/car.svg"></div>
                   </div>
                   <div class="verhical motor">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="motor">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="motor">
                     </div>
                     <div class="icon"><img src="./img/motor.svg"></div>
                   </div>
                   <div class="verhical car_save">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="car_save">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="car_save">
                     </div>
                     <div class="icon"><img src="./img/car_save.svg"></div>
                   </div>
                   <div class="verhical scooter_save">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="scooter_save">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="scooter_save">
                     </div>
                     <div class="icon"><img src="./img/scooter_save.svg"></div>
                   </div>
                   <div class="verhical bike">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="bike">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="bike">
                     </div>
                     <div class="icon"><img src="./img/bike.svg"></div>
                   </div>
                   <div class="verhical scooter">
                     <div class="amount">
-                      <input class="input-number" type="number" placeholder="0 km" value="0" min="0" onkeydown="return event.keyCode!== 69" name="scooter">
+                      <input class="input-number" type="number" placeholder="0 km" value="" min="0" onkeydown="return event.keyCode!== 69" name="scooter">
                     </div>
                     <div class="icon"><img src="./img/scooter.svg"></div>
                   </div>
-                  <a href="results.html" class="button" data-transition="slide">volgende</a>
+                  <a href="results.html" class="button" data-transition="slide">bereken mijn footprint</a>
                 </div>
                 <div class="pagination-container">
                   <a class="pagination" href="furnace.html"><span class="pagination-circle active"></span></a>

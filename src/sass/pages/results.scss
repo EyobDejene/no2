@@ -20,7 +20,7 @@
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
-        ". . . . . button button buttonResults buttonResults . . .";
+        ". . . . resultsbutton resultsbutton button button . . . .";
 
 }
 
@@ -45,8 +45,8 @@
     color: $boxText;
 }
 
-.results .buttonResults{
-    grid-area: buttonesults!important;
+.results .resultsbutton{
+    grid-area: resultsbutton;
     color: $boxText;
 }
 
@@ -58,7 +58,7 @@
     background-color: $nextButtonYellowHover;
 }
 
-.results .buttonResults{
+.results .resultsbutton{
     background-color: $coolBlue;
 }
 
@@ -116,4 +116,24 @@ svg {
     }
     //fill: #333;
     font-size: 12px;
+}
+
+
+.results .amsterdam-board .logo-amststerdam-board{
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    width: 15%;
+    max-height: 100%;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 5rem;
+    bottom: 10%;
+}
+
+
+.results .resultValue{
+    font-family: title;
 }

@@ -9,7 +9,7 @@
     //grid-template-rows: repeat(6, 1fr);
     grid-template-rows: auto;
     grid-template-areas:
-        "page-number info-box info-box info-box info-box info-box info-box info-box . . . ."
+        "page-number info-box info-box info-box info-box info-box info-box info-box info-box . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
         ". . . . . . . . . . . ."
@@ -179,7 +179,7 @@
     height: 100%;
     border-radius: 0 100% 100% 0 / 50%;
     transform-origin: left;
-    animation: spin 3s linear infinite!important;
+    animation: spin 5s linear infinite!important;
     background-color: #bc3637;
     transform: rotate(-.5turn)!important;
 }
@@ -191,7 +191,7 @@
     height: 100%;
     border-radius: 0 100% 100% 0 / 50%;
     transform-origin: left;
-    animation: spin2 3s linear infinite!important;
+    animation: spin2 5s linear infinite!important;
     background-color: #fcca4c;
     transform: rotate(.5turn)!important;
 }
@@ -203,7 +203,7 @@
     height: 100%;
     border-radius: 0 100% 100% 0 / 50%;
     transform-origin: left;
-    animation: spin3 3.5s linear infinite!important;
+    animation: spin3 5.5s linear infinite!important;
     background-color: #7dbfd9;
     transform: rotate(.6turn)!important;
 }

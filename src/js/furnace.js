@@ -22,11 +22,11 @@ export function furnace() {
       for (let i = 0; i < ele.length; i++) {
         if (ele[i].checked) {
 
-          if(ele[i].value === "inductie"){
+          if(ele[i].value === "0"){
             noxValue = 2.39;
-          }else if(ele[i].value === "gas"){
+          }else if(ele[i].value === "1"){
             noxValue = 2.8;
-          }else if(ele[i].value === "keramisch"){
+          }else if(ele[i].value === "2"){
             noxValue = 3.01;
           }
           let DataoObject = {furnace: ele[i].value,noxValue:noxValue};

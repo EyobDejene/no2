@@ -132,7 +132,7 @@
 
 .drop {
     position : absolute;
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 10%, #ffffff 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 20%, #ffffff 100%);
     opacity : 0;
     top : 25px;
 }
@@ -276,3 +276,8 @@
     background-color: $nextButtonDarkBlueHover;
 }
 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
